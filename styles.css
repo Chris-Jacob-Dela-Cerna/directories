@@ -38,7 +38,7 @@ body > .page {
 .header__top-left {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  column-gap: 0.8rem;
 }
 
 .menu-icon__container {
@@ -66,7 +66,7 @@ body > .page {
 
 .header__top-right {
   display: flex;
-  gap: 0.8rem;
+  column-gap: 0.8rem;
 }
 
 .create-new {
@@ -79,12 +79,12 @@ body > .page {
 
   display: flex;
   align-items: center;
-  gap: 0.1rem;
+  column-gap: 0.1rem;
   justify-content: center;
 }
 
 .create-new__icon {
-  height: 1.2rem;
+  aspect-ratio: 1 / 1;
   width: 1.2rem;
 }
 
@@ -98,7 +98,45 @@ body > .page {
 
 
 .page__header > .header__bottom {
+  border-bottom: 1px solid lightgrey;
+
   height: 2.5rem;
+
+  padding: 0 1rem;
+}
+
+.header__nav-list {
+  list-style: none;
+
+  height: 100%;
+  width: fit-content;
+
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.nav-item__container {
+  display: flex;
+  align-items: start;
+}
+
+.nav-item__container.current-page {
+  border-bottom: 1px solid orange;
+  margin-bottom: -1px;
+}
+
+.nav-item {
+  border-radius: 6px;
+
+  padding: 0.3rem 0.4rem;
+
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.nav-item__icon {
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
 
@@ -147,7 +185,7 @@ body > .page {
 
 .user-profile > .contact-info {
   display: flex;
-  gap: 0.5rem;
+  column-gap: 0.5rem;
 }
 
 .contact-info__icon {
@@ -178,7 +216,7 @@ body > .page {
 
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  column-gap: 0.3rem;
 }
 
 .add-dir-btn__icon {
@@ -190,16 +228,14 @@ body > .page {
 
 /*  Temporary  */
 
-.header__top,
-.header__bottom,
 .user-profile,
 .directories__wrapper {
-  border: 1px solid rgb(177, 173, 172);
+  border: 1px solid rgb(212, 208, 207);
 }
 
-.user-profile__icon-container,
 .user-profile__names-wrapper,
-.header__top-left,
-.header__top-right {
+.head__top-left,
+.head__top-right,
+.nav-item {
   border: 1px dashed rgb(228, 161, 135);
 }
