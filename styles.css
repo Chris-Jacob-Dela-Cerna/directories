@@ -16,7 +16,7 @@
 }
 
 .page__main-content {
-  padding: 1rem 0;
+  padding: 0.6rem 0;
 
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 
 
 
-.user-profile {
+.main-content__container > .user-profile {
   max-width: 300px;
   padding: 1rem 0;
 
@@ -96,8 +96,33 @@
 
 
 
-.directories__wrapper {
+.main-content__container > .directories__wrapper {
   flex: 1 0 420px;
+}
+
+.directories__options {
+  border-bottom: 1px solid lightgrey;
+
+  padding: 0.8rem 0;
+
+  display: flex;
+  justify-content: end;
+}
+
+.add-dir-btn {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+
+  padding: 0.4rem 1rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.add-dir-btn__icon {
+  aspect-ratio: 1 / 1;
+  width: 1.2rem;
 }
 
 
