@@ -42,18 +42,59 @@
   padding: 0 1rem;
 
   display: flex;
+  column-gap: 1rem;
   flex: 0 1 1280px;
   flex-wrap: wrap;
-  column-gap: 1rem;
   justify-content: center;
 }
+
+
 
 .user-profile {
   max-width: 300px;
   padding: 1rem 0;
 
+  display: flex;
   flex: 1 0 260px;
+  flex-direction: column;
+  row-gap: 0.8em;
 }
+
+.user-profile__icon-container {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.user-profile__icon {
+  border: 1px solid lightgrey;
+  border-radius: 100%;
+
+  height: 100%;
+  width: 100%;
+}
+
+.user-profile__names-wrapper:not(:last-child) {
+  margin-top: 0.4rem;
+}
+
+.user-profile__edit-btn {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+
+  padding: 0.3rem 0;
+}
+
+.user-profile > .contact-info {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact-info__icon {
+  aspect-ratio: 1rem;
+  width: 1.2em;
+}
+
+
 
 .directories__wrapper {
   flex: 1 0 420px;
@@ -64,12 +105,13 @@
 /*  Temporary  */
 
 .top-header,
-.bottom-header,
-.main-content__container {
+.bottom-header {
   border: 1px dashed grey;
 }
 
 .user-profile,
-.directories__wrapper {
+.directories__wrapper,
+.user-profile__icon-container,
+.user-profile__names-wrapper {
   border: 1px dashed rgb(228, 161, 135);
 }
