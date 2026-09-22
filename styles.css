@@ -3,3 +3,62 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+/*  Page */
+
+.page {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+}
+
+.page__main-content {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/*  Header  */
+
+.page__header > .top-header {
+  height: 3.5rem;
+}
+
+.page__header > .bottom-header {
+  height: 2.5rem;
+}
+
+
+
+/*  Main Content  */
+
+.main-content__container {
+  display: flex;
+  flex: 0 1 1280px;
+}
+
+.user-profile {
+  flex: 1 1 0;
+}
+
+.directories__wrapper {
+  flex: 1 1 0;
+}
+
+
+
+/*  Temporary  */
+
+.top-header,
+.bottom-header {
+  border: 1px dashed grey;
+}
+
+.user-profile,
+.directories__wrapper {
+  border: 1px dashed rgb(228, 161, 135);
+}
