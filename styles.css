@@ -8,7 +8,7 @@
 
 /*  Page */
 
-.page {
+body > .page {
   min-height: 100vh;
 
   display: grid;
@@ -26,11 +26,49 @@
 
 /*  Header  */
 
-.page__header > .top-header {
+.page__header > .header__top {
   height: 3.5rem;
+
+  padding: 0.6rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
 }
 
-.page__header > .bottom-header {
+.header__top-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.menu-icon__container {
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+
+  aspect-ratio: 1 / 1;
+  width: 1.8rem;
+
+  padding: 0.2rem;
+}
+
+.menu-icon {
+  height: 100%;
+  width: 100%;
+}
+
+.user-name__container {
+  font-size: 1rem;
+}
+
+.user-name {
+  text-decoration: none;
+}
+
+
+
+
+
+.page__header > .header__bottom {
   height: 2.5rem;
 }
 
@@ -109,7 +147,7 @@
   justify-content: end;
 }
 
-.add-dir-btn {
+.directories__options > .add-dir-btn {
   border: 1px solid lightgrey;
   border-radius: 8px;
 
@@ -129,14 +167,16 @@
 
 /*  Temporary  */
 
-.top-header,
-.bottom-header {
-  border: 1px dashed grey;
+.header__top,
+.header__bottom,
+.user-profile,
+.directories__wrapper {
+  border: 1px solid rgb(177, 173, 172);
 }
 
-.user-profile,
-.directories__wrapper,
 .user-profile__icon-container,
-.user-profile__names-wrapper {
+.user-profile__names-wrapper,
+.header__top-left,
+.header__top-right {
   border: 1px dashed rgb(228, 161, 135);
 }
