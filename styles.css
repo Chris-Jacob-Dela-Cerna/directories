@@ -16,6 +16,8 @@
 }
 
 .page__main-content {
+  padding: 1rem 0;
+
   display: flex;
   justify-content: center;
 }
@@ -37,16 +39,24 @@
 /*  Main Content  */
 
 .main-content__container {
+  padding: 0 1rem;
+
   display: flex;
   flex: 0 1 1280px;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  justify-content: center;
 }
 
 .user-profile {
-  flex: 1 1 0;
+  max-width: 300px;
+  padding: 1rem 0;
+
+  flex: 1 0 260px;
 }
 
 .directories__wrapper {
-  flex: 1 1 0;
+  flex: 1 0 420px;
 }
 
 
@@ -54,7 +64,8 @@
 /*  Temporary  */
 
 .top-header,
-.bottom-header {
+.bottom-header,
+.main-content__container {
   border: 1px dashed grey;
 }
 
