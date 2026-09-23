@@ -104,7 +104,7 @@ body > .page {
 
   display: flex;
   align-items: center;
-  column-gap: 0.1rem;
+  column-gap: 0.2rem;
   justify-content: center;
 }
 
@@ -269,12 +269,14 @@ body > .page {
 
 
 
-/*  Temporary  */
+/*  Temporary  
 
 .directories__wrapper {
-  border: 1px solid rgb(212, 208, 207);
+  border: 1px dashed rgb(212, 208, 207);
 }
 
 .nav-item {
   border: 1px dashed rgb(228, 161, 135);
 }
+
+*/
