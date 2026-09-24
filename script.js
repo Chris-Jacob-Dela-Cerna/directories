@@ -1,5 +1,3 @@
-
-
 const directories = [];
 
 
@@ -17,11 +15,10 @@ function Directory(name, about=null, tags=[], primaryLanguage=null, lastUpdated=
   this.primaryLanguage = primaryLanguage;
   this.lastUpdated = lastUpdated;
   this.star = false;
-
-  this.toggleStar = function () {
-    if (this.star) this.star = false;
-    else this.star = true;
-  }
 }
 
-const bugtopia = new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "PYTHON", "Jun 28, 2026")
+Directory.prototype.toggleStar = function () {
+  this.star = !this.star;
+}
+
+const bugtopia = new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "PYTHON", "Jun 28, 2026");
