@@ -1,6 +1,5 @@
 
 
-
 function Directory(name, about=null, tags=[], primaryLanguage=null) {
   if (!new.target) throw Error("cannot create object without [new].");
 
@@ -24,3 +23,24 @@ const directories = [
   new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "PYTHON"),
   new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"])
 ];
+
+const pageDirectories = document.getElementById("directories");
+
+for (let i = 0; i < directories.length; i++) {
+  const currentDir = directories[i];
+
+  const dirContainer = document.createElement("div");
+  const dirName = document.createElement("h3");
+  dirName.textContent = currentDir.name;
+  const dirAbout = document.createElement("p");
+  dirAbout.textContent = currentDir.about;
+  const dirTags = document.createElement("ul");
+  //  directory tag logic
+  const dirPrimaryLang = document.createElement("p");
+  dirPrimaryLang.textContent = currentDir.primaryLanguage;
+  dirContainer.appendChild(dirName);
+  dirContainer.appendChild(dirAbout);
+  dirContainer.appendChild(dirTags);
+  dirContainer.appendChild(dirPrimaryLang);
+  pageDirectories.appendChild(dirContainer);
+}
