@@ -40,34 +40,44 @@ const directories = [
 
 //  ---  List of Directories  ---
 
-for (let i = 0; i < directories.length; i++) {
-  const currentDir = directories[i],
-        dirContainer = document.createElement("div");
+function loadDirectories() {
+  pageDirectories.replaceChildren()
 
-  const dirName = document.createElement("h3"),
-        dirAbout = document.createElement("p"),
-        dirTags = document.createElement("ul"),
-        dirPrimaryLanguage = document.createElement("p");
+  for (let i = 0; i < directories.length; i++) {
+    const currentDir = directories[i],
+          dirContainer = document.createElement("div");
 
-  dirName.textContent = currentDir.name;
-  dirAbout.textContent = currentDir.about;
-  //  ---  Directory Tags  ---
-  for (let ii = 0; ii < currentDir.tags.length; ii++) {
-    const currentTag = currentDir.tags[ii],
-          dirTagContainer = document.createElement("div"),
-          dirTag = document.createElement("li"),
-          dirTagText = document.createElement("p");
-    dirTagText.textContent = currentTag;
+    const dirName = document.createElement("h3"),
+          dirAbout = document.createElement("p"),
+          dirTags = document.createElement("ul"),
+          dirPrimaryLanguage = document.createElement("p");
 
-    dirTag.appendChild(dirTagText);
-    dirTagContainer.appendChild(dirTag);
-    dirTags.appendChild(dirTagContainer);
+    dirName.textContent = currentDir.name;
+    dirAbout.textContent = currentDir.about;
+    //  ---  Directory Tags  ---
+    for (let ii = 0; ii < currentDir.tags.length; ii++) {
+      const currentTag = currentDir.tags[ii],
+            dirTagContainer = document.createElement("div"),
+            dirTag = document.createElement("li"),
+            dirTagText = document.createElement("p");
+      dirTagText.textContent = currentTag;
+
+      dirTag.appendChild(dirTagText);
+      dirTagContainer.appendChild(dirTag);
+      dirTags.appendChild(dirTagContainer);
+    }
+    dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+
+    dirContainer.appendChild(dirName);
+    dirContainer.appendChild(dirAbout);
+    dirContainer.appendChild(dirTags);
+    dirContainer.appendChild(dirPrimaryLanguage);
+    pageDirectories.appendChild(dirContainer);
   }
-  dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
-
-  dirContainer.appendChild(dirName);
-  dirContainer.appendChild(dirAbout);
-  dirContainer.appendChild(dirTags);
-  dirContainer.appendChild(dirPrimaryLanguage);
-  pageDirectories.appendChild(dirContainer);
 }
+
+
+
+//  ---  Page Initialization  ---
+
+loadDirectories()
