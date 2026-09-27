@@ -43,7 +43,7 @@ const directories = [
 function buildDirectoryInfo(dirIdx) {
   const currentDir = directories[dirIdx];
 
-  const dirInfoWrapper = document.createElement("div"),
+  const dirInfoContainer = document.createElement("div"),
         dirName = document.createElement("h3"),
         dirAbout = document.createElement("p"),
         dirTags = document.createElement("ul"),
@@ -56,21 +56,21 @@ function buildDirectoryInfo(dirIdx) {
     const currentTag = currentDir.tags[dirTagIdx];
 
     const dirTag = document.createElement("li"),
-          dirTagContainer = document.createElement("div"),
+          dirTagWrapper = document.createElement("div"),
           dirTagText = document.createElement("p");
     dirTagText.textContent = currentTag;
 
-    dirTagContainer.appendChild(dirTagText);
-    dirTag.appendChild(dirTagContainer);
+    dirTagWrapper.appendChild(dirTagText);
+    dirTag.appendChild(dirTagWrapper);
     dirTags.appendChild(dirTag);
   }
   dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
 
-  dirInfoWrapper.appendChild(dirName);
-  dirInfoWrapper.appendChild(dirAbout);
-  dirInfoWrapper.appendChild(dirTags);
-  dirInfoWrapper.appendChild(dirPrimaryLanguage);
-  return dirInfoWrapper;
+  dirInfoContainer.appendChild(dirName);
+  dirInfoContainer.appendChild(dirAbout);
+  dirInfoContainer.appendChild(dirTags);
+  dirInfoContainer.appendChild(dirPrimaryLanguage);
+  return dirInfoContainer;
 }
 
 function loadDirectories() {
