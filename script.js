@@ -63,11 +63,7 @@ function buildDirectoryInfo(currentDir) {
   }
   dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
 
-  dirInfo.appendChild(dirName);
-  dirInfo.appendChild(dirAbout);
-  dirInfo.appendChild(dirTags);
-  dirInfo.appendChild(dirPrimaryLanguage);
-
+  dirInfo.append(dirName, dirAbout, dirTags, dirPrimaryLanguage);
   return dirInfo;
 }
 
@@ -94,13 +90,10 @@ function buildDirectoryActions(currentDir) {
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
   // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
 
-  dirStar.appendChild(dirStarIcon);
-  dirStar.appendChild(dirStarText);
+  dirStar.append(dirStarIcon, dirStarText);
   dirMore.appendChild(dirMoreIcon);
-  dirActionsWrapper.appendChild(dirStar);
-  dirActionsWrapper.appendChild(dirMore);
+  dirActionsWrapper.append(dirStar, dirMore);
   dirActions.appendChild(dirActionsWrapper);
-
   return dirActions;
 }
 
@@ -113,8 +106,7 @@ function loadDirectories() {
           dirInfo = buildDirectoryInfo(currentDir),
           dirActions = buildDirectoryActions(currentDir);
 
-    dirContainer.appendChild(dirInfo);
-    dirContainer.appendChild(dirActions);
+    dirContainer.append(dirInfo, dirActions);
     pageDirectories.appendChild(dirContainer);
   }
 }
