@@ -24,7 +24,7 @@ Directory.prototype.toggleStar = function () {
 
 
 
-//  ---  Mock-up Directories  ---
+//  ---  List of Directories  ---
 
 const directories = [
   new Directory("orion-sign-up", null, [], "HTML"),
@@ -38,41 +38,47 @@ const directories = [
 
 
 
-//  ---  List of Directories  ---
+//  ---  Directories Display Logic  ---
+
+function buildDirectoryInfo(dirIdx) {
+  const currentDir = directories[dirIdx];
+
+  const dirInfoWrapper = document.createElement("div"),
+        dirName = document.createElement("h3"),
+        dirAbout = document.createElement("p"),
+        dirTags = document.createElement("ul"),
+        dirPrimaryLanguage = document.createElement("p");
+
+  dirName.textContent = currentDir.name;
+  dirAbout.textContent = currentDir.about;
+  //  ---  Directory Tags  ---
+  for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
+    const currentTag = currentDir.tags[dirTagIdx];
+
+    const dirTag = document.createElement("li"),
+          dirTagContainer = document.createElement("div"),
+          dirTagText = document.createElement("p");
+    dirTagText.textContent = currentTag;
+
+    dirTagContainer.appendChild(dirTagText);
+    dirTag.appendChild(dirTagContainer);
+    dirTags.appendChild(dirTag);
+  }
+  dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+
+  dirInfoWrapper.appendChild(dirName);
+  dirInfoWrapper.appendChild(dirAbout);
+  dirInfoWrapper.appendChild(dirTags);
+  dirInfoWrapper.appendChild(dirPrimaryLanguage);
+  return dirInfoWrapper;
+}
 
 function loadDirectories() {
   pageDirectories.replaceChildren()
 
-  for (let i = 0; i < directories.length; i++) {
-    const currentDir = directories[i],
-          dirContainer = document.createElement("div");
-
-    const dirName = document.createElement("h3"),
-          dirAbout = document.createElement("p"),
-          dirTags = document.createElement("ul"),
-          dirPrimaryLanguage = document.createElement("p");
-
-    dirName.textContent = currentDir.name;
-    dirAbout.textContent = currentDir.about;
-    //  ---  Directory Tags  ---
-    for (let ii = 0; ii < currentDir.tags.length; ii++) {
-      const currentTag = currentDir.tags[ii],
-            dirTagContainer = document.createElement("div"),
-            dirTag = document.createElement("li"),
-            dirTagText = document.createElement("p");
-      dirTagText.textContent = currentTag;
-
-      dirTag.appendChild(dirTagText);
-      dirTagContainer.appendChild(dirTag);
-      dirTags.appendChild(dirTagContainer);
-    }
-    dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
-
-    dirContainer.appendChild(dirName);
-    dirContainer.appendChild(dirAbout);
-    dirContainer.appendChild(dirTags);
-    dirContainer.appendChild(dirPrimaryLanguage);
-    pageDirectories.appendChild(dirContainer);
+  for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
+    const dirInfo = buildDirectoryInfo(dirIdx);
+    pageDirectories.appendChild(dirInfo);
   }
 }
 
