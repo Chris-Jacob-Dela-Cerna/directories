@@ -40,10 +40,8 @@ const directories = [
 
 //  ---  Directories Display Logic  ---
 
-function buildDirectoryInfo(dirIdx) {
-  const currentDir = directories[dirIdx];
-
-  const dirInfoContainer = document.createElement("div"),
+function buildDirectoryInfo(currentDir) {
+  const dirInfo = document.createElement("div"),
         dirName = document.createElement("h3"),
         dirAbout = document.createElement("p"),
         dirTags = document.createElement("ul"),
@@ -54,7 +52,6 @@ function buildDirectoryInfo(dirIdx) {
   //  ---  Directory Tags  ---
   for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
     const currentTag = currentDir.tags[dirTagIdx];
-
     const dirTag = document.createElement("li"),
           dirTagWrapper = document.createElement("div"),
           dirTagText = document.createElement("p");
@@ -66,19 +63,59 @@ function buildDirectoryInfo(dirIdx) {
   }
   dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
 
-  dirInfoContainer.appendChild(dirName);
-  dirInfoContainer.appendChild(dirAbout);
-  dirInfoContainer.appendChild(dirTags);
-  dirInfoContainer.appendChild(dirPrimaryLanguage);
-  return dirInfoContainer;
+  dirInfo.appendChild(dirName);
+  dirInfo.appendChild(dirAbout);
+  dirInfo.appendChild(dirTags);
+  dirInfo.appendChild(dirPrimaryLanguage);
+
+  return dirInfo;
+}
+
+function buildDirectoryActions(currentDir) {
+  const dirActions = document.createElement("div"),
+        dirActionsWrapper = document.createElement("div"),
+        dirStar = document.createElement("div"),
+        dirStarIcon = document.createElement("img"),
+        dirStarText = document.createElement("p"),
+        dirMore = document.createElement("div"),
+        dirMoreIcon = document.createElement("div");
+
+  //  ---  Directory Star Status  ---
+  if (currentDir.star) {
+    // dirStarIcon.setAttribute("src", "icons/star-solid");
+    // dirStarIcon.setAttribute("alt", "Solid Star");
+    dirStarText.textContent = "Starred";
+  } else {
+    // dirStarIcon.setAttribute("src", "icons/star-empty");
+    // dirStarIcon.setAttribute("alt", "Empty Star");
+    dirStarText.textContent = "Star";
+  }
+
+  // dirMoreIcon.setAttribute("src", "icons/chevron-down");
+  // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
+
+  dirStar.appendChild(dirStarIcon);
+  dirStar.appendChild(dirStarText);
+  dirMore.appendChild(dirMoreIcon);
+  dirActionsWrapper.appendChild(dirStar);
+  dirActionsWrapper.appendChild(dirMore);
+  dirActions.appendChild(dirActionsWrapper);
+
+  return dirActions;
 }
 
 function loadDirectories() {
   pageDirectories.replaceChildren()
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
-    const dirInfo = buildDirectoryInfo(dirIdx);
-    pageDirectories.appendChild(dirInfo);
+    const currentDir = directories[dirIdx];
+    const dirContainer = document.createElement("div"),
+          dirInfo = buildDirectoryInfo(currentDir),
+          dirActions = buildDirectoryActions(currentDir);
+
+    dirContainer.appendChild(dirInfo);
+    dirContainer.appendChild(dirActions);
+    pageDirectories.appendChild(dirContainer);
   }
 }
 
