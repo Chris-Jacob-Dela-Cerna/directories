@@ -67,16 +67,7 @@ function buildDirectoryInfo(currentDir) {
   return dirInfo;
 }
 
-function buildDirectoryActions(currentDir) {
-  const dirActions = document.createElement("div"),
-        dirActionsWrapper = document.createElement("div"),
-        dirStar = document.createElement("div"),
-        dirStarIcon = document.createElement("img"),
-        dirStarText = document.createElement("p"),
-        dirMore = document.createElement("div"),
-        dirMoreIcon = document.createElement("div");
-
-  //  ---  Directory Star Status  ---
+function updateStar(currentDir, dirStarIcon, dirStarText) {
   if (currentDir.star) {
     // dirStarIcon.setAttribute("src", "icons/star-solid");
     // dirStarIcon.setAttribute("alt", "Solid Star");
@@ -86,6 +77,21 @@ function buildDirectoryActions(currentDir) {
     // dirStarIcon.setAttribute("alt", "Empty Star");
     dirStarText.textContent = "Star";
   }
+}
+
+function buildDirectoryActions(currentDir) {
+  const dirActions = document.createElement("div"),
+        dirActionsWrapper = document.createElement("div"),
+        dirStar = document.createElement("div"),
+        dirStarIcon = document.createElement("img"),
+        dirStarText = document.createElement("p"),
+        dirMore = document.createElement("div"),
+        dirMoreIcon = document.createElement("div");
+
+  dirStar.classList.add("star");
+  dirStarIcon.classList.add("star__icon");
+  dirStarText.classList.add("star__text");
+  updateStar(currentDir, dirStarIcon, dirStarText);
 
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
   // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
@@ -102,17 +108,28 @@ function loadDirectories() {
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
     const currentDir = directories[dirIdx];
-    const dirContainer = document.createElement("div"),
+    const directory = document.createElement("div"),
           dirInfo = buildDirectoryInfo(currentDir),
           dirActions = buildDirectoryActions(currentDir);
 
-    dirContainer.append(dirInfo, dirActions);
-    pageDirectories.appendChild(dirContainer);
+    directory.append(dirInfo, dirActions);
+    directory.addEventListener("click", function(event) {
+      if (![...event.target.classList].includes("star")) return;
+      currentDir.toggleStar();
+
+      const dirStarIcon = directory.querySelector(".star__icon"),
+            dirStarText = directory.querySelector(".star__text");
+      updateStar(currentDir, dirStarIcon, dirStarText);
+    })
+
+    pageDirectories.appendChild(directory);
   }
+
+  document.querySelector("directory");
 }
 
 
 
 //  ---  Page Initialization  ---
 
-loadDirectories()
+loadDirectories();
