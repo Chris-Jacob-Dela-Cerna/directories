@@ -38,6 +38,17 @@ const directories = [
 
 
 
+//  ---  Utilities  ---
+
+function createElement(tagName, className, idName) {
+  const element = document.createElement(tagName);
+  if (className) element.classList.add(className);
+  if (idName) element.setAttribute("id", idName);
+  return element;
+}
+
+
+
 //  ---  Directories Display Logic  ---
 
 function buildDirectoryInfo(currentDir) {
@@ -55,6 +66,8 @@ function buildDirectoryInfo(currentDir) {
 
   dirName.textContent = currentDir.name;
   dirAbout.textContent = currentDir.about;
+  dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+
   //  ---  Directory Tags  ---
   for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
     const currentTag = currentDir.tags[dirTagIdx];
@@ -72,8 +85,7 @@ function buildDirectoryInfo(currentDir) {
     dirTagWrapper.appendChild(dirTag);
     dirTags.appendChild(dirTagWrapper);
   }
-  dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
-
+  
   dirInfo.append(dirName, dirAbout, dirTags, dirPrimaryLanguage);
   return dirInfo;
 }
@@ -127,22 +139,19 @@ function loadDirectories() {
           dirInfo = buildDirectoryInfo(currentDir),
           dirActions = buildDirectoryActions(currentDir);
 
+    directory.classList.add("directory");
+
     directory.append(dirInfo, dirActions);
     directory.addEventListener("click", function(event) {
       if (![...event.target.classList].includes("star")) return;
       currentDir.toggleStar();
-
       const dirStarIcon = directory.querySelector(".star__icon"),
             dirStarText = directory.querySelector(".star__text");
       updateStar(currentDir, dirStarIcon, dirStarText);
     })
 
-    console.log(directory)
-
     pageDirectories.appendChild(directory);
   }
-
-  document.querySelector("directory");
 }
 
 
