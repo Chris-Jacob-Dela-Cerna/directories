@@ -47,19 +47,30 @@ function buildDirectoryInfo(currentDir) {
         dirTags = document.createElement("ul"),
         dirPrimaryLanguage = document.createElement("p");
 
+  dirInfo.classList.add("directory__info");
+  dirName.classList.add("directory__name");
+  dirAbout.classList.add("directory__about");
+  dirTags.classList.add("directory__tags");
+  dirPrimaryLanguage.classList.add("directory__primary-language");
+
   dirName.textContent = currentDir.name;
   dirAbout.textContent = currentDir.about;
   //  ---  Directory Tags  ---
   for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
     const currentTag = currentDir.tags[dirTagIdx];
-    const dirTag = document.createElement("li"),
-          dirTagWrapper = document.createElement("div"),
+    const dirTagWrapper = document.createElement("li"),
+          dirTag = document.createElement("div"),
           dirTagText = document.createElement("p");
+
+    dirTagWrapper.classList.add("directory__tag-wrapper");
+    dirTag.classList.add("tag");
+    dirTagText.classList.add("tag__text");
+
     dirTagText.textContent = currentTag;
 
-    dirTagWrapper.appendChild(dirTagText);
-    dirTag.appendChild(dirTagWrapper);
-    dirTags.appendChild(dirTag);
+    dirTag.appendChild(dirTagText);
+    dirTagWrapper.appendChild(dirTag);
+    dirTags.appendChild(dirTagWrapper);
   }
   dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
 
@@ -80,27 +91,31 @@ function updateStar(currentDir, dirStarIcon, dirStarText) {
 }
 
 function buildDirectoryActions(currentDir) {
-  const dirActions = document.createElement("div"),
-        dirActionsWrapper = document.createElement("div"),
+  const dirActionsContainer = document.createElement("div"),
+        dirActions = document.createElement("div"),
         dirStar = document.createElement("div"),
         dirStarIcon = document.createElement("img"),
         dirStarText = document.createElement("p"),
         dirMore = document.createElement("div"),
-        dirMoreIcon = document.createElement("div");
+        dirMoreIcon = document.createElement("img");
 
+  dirActionsContainer.classList.add("directory__actions-container");
+  dirActions.classList.add("directory__actions");
   dirStar.classList.add("star");
   dirStarIcon.classList.add("star__icon");
   dirStarText.classList.add("star__text");
-  updateStar(currentDir, dirStarIcon, dirStarText);
+  dirMore.classList.add("more");
+  dirMoreIcon.classList.add("more__icon");
 
+  updateStar(currentDir, dirStarIcon, dirStarText);
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
   // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
 
   dirStar.append(dirStarIcon, dirStarText);
   dirMore.appendChild(dirMoreIcon);
-  dirActionsWrapper.append(dirStar, dirMore);
-  dirActions.appendChild(dirActionsWrapper);
-  return dirActions;
+  dirActions.append(dirStar, dirMore);
+  dirActionsContainer.appendChild(dirActions);
+  return dirActionsContainer;
 }
 
 function loadDirectories() {
@@ -121,6 +136,8 @@ function loadDirectories() {
             dirStarText = directory.querySelector(".star__text");
       updateStar(currentDir, dirStarIcon, dirStarText);
     })
+
+    console.log(directory)
 
     pageDirectories.appendChild(directory);
   }
