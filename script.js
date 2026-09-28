@@ -40,7 +40,7 @@ const directories = [
 
 //  ---  Utilities  ---
 
-function createElement(tagName, className, idName) {
+function craftElement(tagName, className, idName) {
   const element = document.createElement(tagName);
   if (className) element.classList.add(className);
   if (idName) element.setAttribute("id", idName);
@@ -52,17 +52,11 @@ function createElement(tagName, className, idName) {
 //  ---  Directories Display Logic  ---
 
 function buildDirectoryInfo(currentDir) {
-  const dirInfo = document.createElement("div"),
-        dirName = document.createElement("h3"),
-        dirAbout = document.createElement("p"),
-        dirTags = document.createElement("ul"),
-        dirPrimaryLanguage = document.createElement("p");
-
-  dirInfo.classList.add("directory__info");
-  dirName.classList.add("directory__name");
-  dirAbout.classList.add("directory__about");
-  dirTags.classList.add("directory__tags");
-  dirPrimaryLanguage.classList.add("directory__primary-language");
+  const dirInfo = craftElement("div", "directory__info"),
+        dirName = craftElement("h3", "directory__name"),
+        dirAbout = craftElement("p", "directory__about"),
+        dirTags = craftElement("ul", "directory__tags"),
+        dirPrimaryLanguage = craftElement("p", "directory__primary-language");
 
   dirName.textContent = currentDir.name;
   dirAbout.textContent = currentDir.about;
@@ -71,13 +65,9 @@ function buildDirectoryInfo(currentDir) {
   //  ---  Directory Tags  ---
   for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
     const currentTag = currentDir.tags[dirTagIdx];
-    const dirTagWrapper = document.createElement("li"),
-          dirTag = document.createElement("div"),
-          dirTagText = document.createElement("p");
-
-    dirTagWrapper.classList.add("directory__tag-wrapper");
-    dirTag.classList.add("tag");
-    dirTagText.classList.add("tag__text");
+    const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
+          dirTag = craftElement("div", "tag"),
+          dirTagText = craftElement("p", "tag__text");
 
     dirTagText.textContent = currentTag;
 
@@ -85,7 +75,7 @@ function buildDirectoryInfo(currentDir) {
     dirTagWrapper.appendChild(dirTag);
     dirTags.appendChild(dirTagWrapper);
   }
-  
+
   dirInfo.append(dirName, dirAbout, dirTags, dirPrimaryLanguage);
   return dirInfo;
 }
@@ -103,21 +93,13 @@ function updateStar(currentDir, dirStarIcon, dirStarText) {
 }
 
 function buildDirectoryActions(currentDir) {
-  const dirActionsContainer = document.createElement("div"),
-        dirActions = document.createElement("div"),
-        dirStar = document.createElement("div"),
-        dirStarIcon = document.createElement("img"),
-        dirStarText = document.createElement("p"),
-        dirMore = document.createElement("div"),
-        dirMoreIcon = document.createElement("img");
-
-  dirActionsContainer.classList.add("directory__actions-container");
-  dirActions.classList.add("directory__actions");
-  dirStar.classList.add("star");
-  dirStarIcon.classList.add("star__icon");
-  dirStarText.classList.add("star__text");
-  dirMore.classList.add("more");
-  dirMoreIcon.classList.add("more__icon");
+  const dirActionsContainer = craftElement("div", "directory__actions-container"),
+        dirActions = craftElement("div", "directory__actions"),
+        dirStar = craftElement("div", "star"),
+        dirStarIcon = craftElement("img", "star__icon"),
+        dirStarText = craftElement("p", "star__text"),
+        dirMore = craftElement("div", "more"),
+        dirMoreIcon = craftElement("img", "more__icon");
 
   updateStar(currentDir, dirStarIcon, dirStarText);
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
@@ -135,13 +117,13 @@ function loadDirectories() {
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
     const currentDir = directories[dirIdx];
-    const directory = document.createElement("div"),
+    const directory = craftElement("div", "directory"),
           dirInfo = buildDirectoryInfo(currentDir),
           dirActions = buildDirectoryActions(currentDir);
 
-    directory.classList.add("directory");
-
     directory.append(dirInfo, dirActions);
+    console.log(directory)
+
     directory.addEventListener("click", function(event) {
       if (![...event.target.classList].includes("star")) return;
       currentDir.toggleStar();
