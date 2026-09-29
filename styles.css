@@ -22,8 +22,10 @@
   --clr-150-blue-300: rgb(35, 40, 50);
   --clr-150-blue-500: rgb(20, 25, 35);
   --clr-175-blue-325: rgb(40, 45, 55);
+  --clr-200-blue-300: rgb(45, 50, 60);
   --clr-350-blue-200: rgb(60, 65, 75);
-  --clr-850-blue-100: rgb(210, 215, 225);
+  --clr-600-blue-100: rgb(145, 150, 160);
+  --clr-850-blue-75: rgb(210, 215, 225);
   --clr-950-orange-700: rgb(255, 135, 115);
 
   --font-main: 'Plus Jakarta Sans';
@@ -103,7 +105,7 @@ body > .page {
 
 .user-name {
   border-radius: 6px;
-  color: var(--clr-850-blue-100);
+  color: var(--clr-850-blue-75);
   font-weight: bold;
   text-decoration: none;
 
@@ -204,7 +206,7 @@ body > .page {
 }
 
 .nav-item__name {
-  color: var(--clr-850-blue-100);
+  color: var(--clr-850-blue-75);
   font-size: 0.85rem;
 }
 
@@ -213,7 +215,7 @@ body > .page {
 /*  Main Content  */
 
 .main-content__container {
-  padding: 0 1rem;
+  padding: 0 2rem;
 
   display: flex;
   column-gap: 1rem;
@@ -226,7 +228,7 @@ body > .page {
 
 .main-content__container > .user-profile {
   max-width: 300px;
-  padding: 1rem 0;
+  padding: 2rem 0;
 
   display: flex;
   flex: 1 0 260px;
@@ -241,24 +243,33 @@ body > .page {
   aspect-ratio: 1 / 1;
 }
 
-.user-profile__names-wrapper:not(:last-child) {
-  margin-top: 0.4rem;
-}
-
-.user-profile__nick-name {
-  font-size: 1.4rem;
+.user-profile__display-name {
+  color: var(--clr-850-blue-75);
+  font-size: 1.5rem;
 }
 
 .user-profile__user-name {
-  font-size: 1.1rem;
+  color: var(--clr-600-blue-100);
+  font-size: 1.2rem;
+}
+
+.user-profile__bio {
+  color: var(--clr-850-blue-75);
 }
 
 .user-profile__follow-btn {
+  background-color: var(--clr-200-blue-300);
   border: 1px solid var(--clr-350-blue-200);
   border-radius: 8px;
-  font-size: 0.9rem;
+  color: var(--clr-850-blue-75);
+  font-size: 0.85rem;
+  text-decoration: none;
 
   padding: 0.35rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-profile > .contact-info {
@@ -272,19 +283,22 @@ body > .page {
 }
 
 .contact-info__text {
+  color: var(--clr-850-blue-75);
   font-size: 0.85rem;
 }
 
 
 
 .main-content__container > .directories__wrapper {
+  padding-top: 0.2rem;
+
   flex: 1 0 420px;
 }
 
 .directories__options {
   border-bottom: 1px solid var(--clr-350-blue-200);
 
-  padding: 0.8rem 0;
+  padding: 1rem 0;
 
   display: flex;
   justify-content: end;
@@ -294,7 +308,7 @@ body > .page {
   border: 1px solid lightgrey;
   border-radius: 8px;
 
-  padding: 0.4rem 1rem;
+  padding: 0.35rem 0.9rem;
 
   display: flex;
   align-items: center;
