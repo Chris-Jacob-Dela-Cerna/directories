@@ -24,9 +24,11 @@
   --clr-175-blue-325: rgb(40, 45, 55);
   --clr-200-blue-300: rgb(45, 50, 60);
   --clr-350-blue-200: rgb(60, 65, 75);
+  --clr-500-green: rgb(0, 135, 55);
   --clr-600-blue-100: rgb(145, 150, 160);
   --clr-850-blue-75: rgb(210, 215, 225);
   --clr-950-orange-700: rgb(255, 135, 115);
+  --clr-1000-white: rgb(255, 255, 255);
 
   --font-main: 'Plus Jakarta Sans';
 }
@@ -298,17 +300,19 @@ body > .page {
 .directories__options {
   border-bottom: 1px solid var(--clr-350-blue-200);
 
-  padding: 1rem 0;
+  padding: 0.9rem 0;
 
   display: flex;
   justify-content: end;
 }
 
 .directories__options > .add-dir-btn {
-  border: 1px solid lightgrey;
+  background-color: var(--clr-500-green);
+  border: 1px solid var(--clr-150-blue-300);
   border-radius: 8px;
+  color: var(--clr-1000-white);
 
-  padding: 0.35rem 0.9rem;
+  padding: 0.4rem 0.9rem;
 
   display: flex;
   align-items: center;
