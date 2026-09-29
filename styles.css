@@ -76,7 +76,7 @@ body > .page {
 .header__top-left {
   display: flex;
   align-items: center;
-  column-gap: 0.8rem;
+  column-gap: 0.35rem;
 }
 
 .menu-icon__wrapper {
@@ -102,9 +102,17 @@ body > .page {
 }
 
 .user-name {
+  border-radius: 6px;
   color: var(--clr-850-blue-100);
   font-weight: bold;
   text-decoration: none;
+
+  padding: 0.35rem;
+
+  display: flex;
+  align-items: center;
+
+  &:hover { background-color: var(--clr-175-blue-325); }
 }
 
 .header__top-right {
@@ -179,8 +187,9 @@ body > .page {
 .nav-item {
   border-radius: 6px;
   cursor: pointer;
+  text-decoration: none;
 
-  padding: 0.35rem 0.5rem;
+  padding: 0.4rem 0.55rem;
 
   display: flex;
   align-items: center;
