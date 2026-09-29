@@ -68,7 +68,6 @@ function buildDirectoryInfo(currentDir) {
     const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
           dirTag = craftElement("div", "tag"),
           dirTagText = craftElement("p", "tag__text");
-
     dirTagText.textContent = currentTag;
 
     dirTag.appendChild(dirTagText);
@@ -113,7 +112,7 @@ function buildDirectoryActions(currentDir) {
 }
 
 function loadDirectories() {
-  pageDirectories.replaceChildren()
+  pageDirectories.replaceChildren();
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
     const currentDir = directories[dirIdx];
@@ -122,11 +121,11 @@ function loadDirectories() {
           dirActions = buildDirectoryActions(currentDir);
 
     directory.append(dirInfo, dirActions);
-    console.log(directory)
 
     directory.addEventListener("click", function(event) {
       if (![...event.target.classList].includes("star")) return;
       currentDir.toggleStar();
+
       const dirStarIcon = directory.querySelector(".star__icon"),
             dirStarText = directory.querySelector(".star__text");
       updateStar(currentDir, dirStarIcon, dirStarText);
