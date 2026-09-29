@@ -76,7 +76,7 @@ body > .page {
 .header__top-left {
   display: flex;
   align-items: center;
-  column-gap: 0.35rem;
+  column-gap: 0.5rem;
 }
 
 .menu-icon__wrapper {
@@ -253,7 +253,7 @@ body > .page {
   font-size: 1.1rem;
 }
 
-.user-profile__edit-btn {
+.user-profile__follow-btn {
   border: 1px solid var(--clr-350-blue-200);
   border-radius: 8px;
   font-size: 0.9rem;
