@@ -446,9 +446,6 @@ body > .page {
 
 .star__icon,
 .more__icon {
-  pointer-events: none;
-  user-select: none;
-
   height: 1.4rem;
   width: 1.4rem;
 }
@@ -456,14 +453,21 @@ body > .page {
 .star__text {
   color: var(--clr-1000-white);
   font-size: 0.73rem;
-  pointer-events: none;
-  user-select: none;
 
   padding-left: 0.7rem;
 }
 
 .directory__actions > .more {
   padding: 0.1rem 0.25rem;
+}
+
+
+
+/*  Utility  */
+
+.ghost {
+  pointer-events: none;
+  user-select: none;
 }
 
 

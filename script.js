@@ -119,6 +119,8 @@ function buildDirectoryActions(currentDir) {
         dirMore = craftElement("div", "more"),
         dirMoreIcon = craftElement("img", "more__icon");
 
+  dirStarIcon.classList.add("ghost");
+  dirMoreIcon.classList.add("ghost");
   updateStar(currentDir, dirStarIcon, dirStarText);
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
   // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
