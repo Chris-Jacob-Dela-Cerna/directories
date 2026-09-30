@@ -337,7 +337,7 @@ body > .page {
 }
 
 .directory__info {
-  padding: 2rem 0;
+  padding: 2rem 0 2.2rem 0;
 
   display: flex;
   flex-direction: column;
@@ -345,7 +345,9 @@ body > .page {
 
 .directory__name {
   color: var(--clr-950-blue-650);
-  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
 
   &:hover { text-decoration: underline; }
 }

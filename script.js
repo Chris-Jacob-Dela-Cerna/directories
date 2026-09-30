@@ -8,14 +8,15 @@ const pageDirectories = document.getElementById("directories__list");
 
 //  ---  Directory Object Constructor  ---
 
-function Directory(name, about=null, tags=null, primaryLanguage=null) {
+function Directory(name, about=null, tags=null, primaryLanguage=null, url="#", star=false) {
   if (!new.target) throw Error("cannot create object without [new].");
 
   this.name = name;
   this.about = about;
   this.tags = tags;
   this.primaryLanguage = primaryLanguage;
-  this.star = false;
+  this.star = star;
+  this.url = url;
 }
 
 Directory.prototype.toggleStar = function () {
@@ -27,13 +28,13 @@ Directory.prototype.toggleStar = function () {
 //  ---  List of Directories  ---
 
 const directories = [
-  new Directory("orion-sign-up", null, null, "HTML"),
-  new Directory("orion-dashboard", null, null, "HTML"),
-  new Directory("calculator", null, null, "JavaScript"),
-  new Directory("etch-a-sketch", null, null, "CSS"),
-  new Directory("landing-page", null, null, "CSS"),
-  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "Python"),
-  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "Python")
+  new Directory("orion-sign-up", null, null, "HTML", "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up"),
+  new Directory("orion-dashboard", null, null, "HTML", "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard"),
+  new Directory("calculator", null, null, "JavaScript", "https://github.com/Chris-Jacob-Dela-Cerna/calculator"),
+  new Directory("etch-a-sketch", null, null, "CSS", "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch"),
+  new Directory("landing-page", null, null, "CSS", "https://github.com/Chris-Jacob-Dela-Cerna/landing-page"),
+  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "Python", "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia"),
+  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "Python", "https://github.com/Chris-Jacob-Dela-Cerna/quizpin")
 ];
 
 
@@ -54,8 +55,12 @@ function craftElement(tagName, className, idName) {
 function buildDirectoryInfo(currentDir) {
   const dirInfo = craftElement("div", "directory__info");
 
-  const dirName = craftElement("h3", "directory__name");
+  const dirNameWrapper = craftElement("h3", "directory__name-wrapper"),
+        dirName = craftElement("a", "directory__name");
   dirName.textContent = currentDir.name;
+  dirName.setAttribute("href", currentDir.url);
+  dirName.setAttribute("target", "__blank");
+  dirNameWrapper.appendChild(dirName);
   dirInfo.appendChild(dirName);
 
   if (currentDir.about) {
@@ -72,7 +77,8 @@ function buildDirectoryInfo(currentDir) {
             dirTag = craftElement("a", "directory__tag");
       
       dirTag.textContent = currentTag;
-      dirTag.setAttribute("href", "#");
+      dirTag.setAttribute("href", `https://github.com/topics/${currentTag}`);
+      dirTag.setAttribute("target", "__blank");
 
       dirTagWrapper.appendChild(dirTag);
       dirTags.appendChild(dirTagWrapper);
