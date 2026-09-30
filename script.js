@@ -32,8 +32,8 @@ const directories = [
   new Directory("calculator", null, null, "JavaScript"),
   new Directory("etch-a-sketch", null, null, "CSS"),
   new Directory("landing-page", null, null, "CSS"),
-  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "PYTHON"),
-  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "PYTHON")
+  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "Python"),
+  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "Python")
 ];
 
 
@@ -69,11 +69,11 @@ function buildDirectoryInfo(currentDir) {
     for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
       const currentTag = currentDir.tags[dirTagIdx];
       const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
-            dirTag = craftElement("div", "tag"),
-            dirTagText = craftElement("p", "tag__text");
-      dirTagText.textContent = currentTag;
+            dirTag = craftElement("a", "directory__tag");
+      
+      dirTag.textContent = currentTag;
+      dirTag.setAttribute("href", "#");
 
-      dirTag.appendChild(dirTagText);
       dirTagWrapper.appendChild(dirTag);
       dirTags.appendChild(dirTagWrapper);
     }

@@ -21,13 +21,15 @@
 :root {
   --clr-150-blue-300: rgb(35, 40, 50);
   --clr-150-blue-500: rgb(20, 25, 35);
-  --clr-175-blue-325: rgb(40, 45, 55);
-  --clr-200-blue-300: rgb(45, 50, 60);
-  --clr-225-blue-300: rgb(50, 55, 65);
-  --clr-350-blue-200: rgb(60, 65, 75);
+  --clr-200-blue-325: rgb(40, 45, 55);
+  --clr-225-blue-300: rgb(45, 50, 60);
+  --clr-250-blue-300: rgb(50, 55, 65);
+  --clr-275-blue-450: rgb(40, 45, 70);
+  --clr-300-blue-200: rgb(60, 65, 75);
   --clr-500-green: rgb(0, 135, 55);
   --clr-600-blue-100: rgb(145, 150, 160);
   --clr-850-blue-75: rgb(210, 215, 225);
+  --clr-950-blue-650: rgb(85, 150, 245);
   --clr-950-orange-700: rgb(255, 135, 115);
   --clr-1000-white: rgb(255, 255, 255);
 
@@ -86,7 +88,7 @@ body > .page {
 }
 
 .menu-icon__wrapper {
-  border: 1px solid var(--clr-350-blue-200);
+  border: 1px solid var(--clr-300-blue-200);
   border-radius: 6px;
   cursor: pointer;
 
@@ -95,7 +97,7 @@ body > .page {
 
   padding: 0.2rem;
 
-  &:hover { background-color: var(--clr-175-blue-325); }
+  &:hover { background-color: var(--clr-200-blue-325); }
 }
 
 .menu-icon {
@@ -118,7 +120,7 @@ body > .page {
   display: flex;
   align-items: center;
 
-  &:hover { background-color: var(--clr-175-blue-325); }
+  &:hover { background-color: var(--clr-200-blue-325); }
 }
 
 .header__top-right {
@@ -127,7 +129,7 @@ body > .page {
 }
 
 .create-new {
-  border: 1px solid var(--clr-350-blue-200);
+  border: 1px solid var(--clr-300-blue-200);
   border-radius: 6px;
   cursor: pointer;
 
@@ -140,7 +142,7 @@ body > .page {
   column-gap: 0.2rem;
   justify-content: center;
 
-  &:hover { background-color: var(--clr-175-blue-325); }
+  &:hover { background-color: var(--clr-200-blue-325); }
 }
 
 .create-new__icon {
@@ -149,7 +151,7 @@ body > .page {
 }
 
 .header__profile-icon {
-  border: 1px solid var(--clr-350-blue-200);
+  border: 1px solid var(--clr-300-blue-200);
   border-radius: 100%;
   cursor: pointer;
 
@@ -159,7 +161,7 @@ body > .page {
 
 
 .header > .header__bottom {
-  border-bottom: 1px solid var(--clr-350-blue-200);
+  border-bottom: 1px solid var(--clr-300-blue-200);
 
   height: 2.5rem;
 
@@ -185,9 +187,7 @@ body > .page {
   border-bottom: 1px solid var(--clr-950-orange-700);
   margin-bottom: -1px;
 
-  .nav-item {
-    .nav-item__name { font-weight: bold; }
-  }
+  .nav-item { .nav-item__name { font-weight: bold; } }
 }
 
 .nav-item {
@@ -201,7 +201,7 @@ body > .page {
   align-items: center;
   column-gap: 0.5rem;
 
-  &:hover { background-color: var(--clr-175-blue-325); }
+  &:hover { background-color: var(--clr-200-blue-325); }
 }
 
 .nav-item__icon {
@@ -241,7 +241,7 @@ body > .page {
 }
 
 .user-profile__icon {
-  border: 1px solid var(--clr-350-blue-200);
+  border: 1px solid var(--clr-300-blue-200);
   border-radius: 100%;
 
   aspect-ratio: 1 / 1;
@@ -262,20 +262,21 @@ body > .page {
 }
 
 .user-profile__follow-btn {
-  background-color: var(--clr-200-blue-300);
-  border: 1px solid var(--clr-350-blue-200);
+  background-color: var(--clr-225-blue-300);
+  border: 1px solid var(--clr-300-blue-200);
   border-radius: 8px;
   color: var(--clr-850-blue-75);
+  cursor: pointer;
   font-size: 0.85rem;
   text-decoration: none;
 
-  padding: 0.35rem 0;
+  padding: 0.4rem 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &:hover { background-color: var(--clr-225-blue-300); }
+  &:hover { background-color: var(--clr-250-blue-300); }
 }
 
 .user-profile > .contact-info {
@@ -302,7 +303,7 @@ body > .page {
 }
 
 .directories__options {
-  border-bottom: 1px solid var(--clr-350-blue-200);
+  border-bottom: 1px solid var(--clr-300-blue-200);
 
   padding: 0.9rem 0;
 
@@ -329,28 +330,25 @@ body > .page {
 }
 
 .directories__list > .directory {
-  border-bottom: 1px solid var(--clr-350-blue-200);
+  border-bottom: 1px solid var(--clr-300-blue-200);
 
   display: flex;
 }
 
 .directory__info {
+  padding: 1.7rem 0;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 
 
 /*  Temporary  */
 
-.directory__info,
-.directory__actions-container,
+/* 
+.directory__info > *,
 .directory__actions {
   border: 1px dashed var(--clr-600-blue-100);
-}
-
-.directory__info > * {
-  border: 1px solid var(--clr-500-green);
-  padding: 10px 0;
-}
+} 
+*/
