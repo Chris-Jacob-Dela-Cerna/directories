@@ -28,13 +28,13 @@ Directory.prototype.toggleStar = function () {
 //  ---  List of Directories  ---
 
 const directories = [
-  new Directory("orion-sign-up", null, null, "HTML", "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up"),
-  new Directory("orion-dashboard", null, null, "HTML", "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard"),
-  new Directory("calculator", null, null, "JavaScript", "https://github.com/Chris-Jacob-Dela-Cerna/calculator"),
-  new Directory("etch-a-sketch", null, null, "CSS", "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch"),
-  new Directory("landing-page", null, null, "CSS", "https://github.com/Chris-Jacob-Dela-Cerna/landing-page"),
-  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "Python", "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia"),
-  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "Python", "https://github.com/Chris-Jacob-Dela-Cerna/quizpin")
+  new Directory("orion-sign-up", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up"),
+  new Directory("orion-dashboard", null, null, { "color": "#ee3008", "language": "HTML" }, "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard"),
+  new Directory("calculator", null, null, { "color": "#ebed48", "language": "JavaScript" }, "https://github.com/Chris-Jacob-Dela-Cerna/calculator"),
+  new Directory("etch-a-sketch", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch"),
+  new Directory("landing-page", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/landing-page"),
+  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], { "color": "#3869a8", "language": "Python" }, "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia"),
+  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], { "color": "#3869a8", "language": "Python" }, "https://github.com/Chris-Jacob-Dela-Cerna/quizpin")
 ];
 
 
@@ -87,8 +87,13 @@ function buildDirectoryInfo(currentDir) {
   }
 
   if (currentDir.primaryLanguage) {
-    const dirPrimaryLanguage = craftElement("p", "directory__primary-language");
-    dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+    const dirPrimaryLanguage = craftElement("div", "primary-language"),
+          dirPrimaryLanguageColor = craftElement("div", "primary-language__color"),
+          dirPrimaryLanguageName = craftElement("p", "primary-language__name");
+    dirPrimaryLanguageColor.style.backgroundColor = currentDir.primaryLanguage['color'];
+    dirPrimaryLanguageName.textContent = currentDir.primaryLanguage['language'];
+
+    dirPrimaryLanguage.append(dirPrimaryLanguageColor, dirPrimaryLanguageName);
     dirInfo.append(dirPrimaryLanguage);
   }
 
