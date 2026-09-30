@@ -300,7 +300,7 @@ body > .page {
 .main-content__container > .directories {
   padding-top: 0.2rem;
 
-  flex: 1 0 420px;
+  flex: 1 0 360px;
 }
 
 .directories__options {
@@ -338,9 +338,10 @@ body > .page {
 }
 
 .directory__info {
-  padding: 1.7rem 0 2.5rem 0;
+  padding: 1.7rem 4rem 2.5rem 0;
 
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
 }
 
@@ -349,6 +350,7 @@ body > .page {
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
+  text-overflow: clip;
 
   &:hover { text-decoration: underline; }
 }
@@ -356,6 +358,8 @@ body > .page {
 .directory__about {
   color: var(--clr-600-blue-100);
   font-size: 0.9rem;
+
+  max-width: 46ch;
 
   margin-top: 0.5rem;
 }
@@ -365,8 +369,9 @@ body > .page {
   margin-top: 1rem;
 
   display: flex;
+  column-gap: 0.2rem;
   flex-wrap: wrap;
-  gap: 0.15rem;
+  row-gap: 0.5rem;
 }
 
 .directory__tag {
@@ -402,15 +407,17 @@ body > .page {
 .primary-language__name {
   color: var(--clr-600-blue-100);
   font-size: 0.75rem;
+  text-overflow: clip;
+}
+
+.directory__actions-container {
+  flex: 0 0 10rem;
 }
 
 
 
 /*  Temporary  */
 
-/* 
-.directory__info > *,
-.directory__actions {
+.directory__actions-container {
   border: 1px dashed var(--clr-600-blue-100);
 } 
-*/
