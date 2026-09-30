@@ -23,6 +23,7 @@
   --clr-150-blue-500: rgb(20, 25, 35);
   --clr-175-blue-325: rgb(40, 45, 55);
   --clr-200-blue-300: rgb(45, 50, 60);
+  --clr-225-blue-300: rgb(50, 55, 65);
   --clr-350-blue-200: rgb(60, 65, 75);
   --clr-500-green: rgb(0, 135, 55);
   --clr-600-blue-100: rgb(145, 150, 160);
@@ -36,6 +37,7 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-main);
+  letter-spacing: 0.015rem;
   margin: 0;
   padding: 0;
 }
@@ -272,6 +274,8 @@ body > .page {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover { background-color: var(--clr-225-blue-300); }
 }
 
 .user-profile > .contact-info {
@@ -291,7 +295,7 @@ body > .page {
 
 
 
-.main-content__container > .directories__wrapper {
+.main-content__container > .directories {
   padding-top: 0.2rem;
 
   flex: 1 0 420px;
@@ -322,4 +326,31 @@ body > .page {
 .add-dir-btn__icon {
   aspect-ratio: 1 / 1;
   width: 1.2rem;
+}
+
+.directories__list > .directory {
+  border-bottom: 1px solid var(--clr-350-blue-200);
+
+  display: flex;
+}
+
+.directory__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+/*  Temporary  */
+
+.directory__info,
+.directory__actions-container,
+.directory__actions {
+  border: 1px dashed var(--clr-600-blue-100);
+}
+
+.directory__info > * {
+  border: 1px solid var(--clr-500-green);
+  padding: 10px 0;
 }

@@ -2,13 +2,13 @@
 
 //  ---  DOM References  ---
 
-const pageDirectories = document.getElementById("directories");
+const pageDirectories = document.getElementById("directories__list");
 
 
 
 //  ---  Directory Object Constructor  ---
 
-function Directory(name, about=null, tags=[], primaryLanguage=null) {
+function Directory(name, about=null, tags=null, primaryLanguage=null) {
   if (!new.target) throw Error("cannot create object without [new].");
 
   this.name = name;
@@ -27,11 +27,11 @@ Directory.prototype.toggleStar = function () {
 //  ---  List of Directories  ---
 
 const directories = [
-  new Directory("orion-sign-up", null, [], "HTML"),
-  new Directory("orion-dashboard", null, [], "HTML"),
-  new Directory("calculator", null, [], "JavaScript"),
-  new Directory("etch-a-sketch", null, [], "CSS"),
-  new Directory("landing-page", null, [], "CSS"),
+  new Directory("orion-sign-up", null, null, "HTML"),
+  new Directory("orion-dashboard", null, null, "HTML"),
+  new Directory("calculator", null, null, "JavaScript"),
+  new Directory("etch-a-sketch", null, null, "CSS"),
+  new Directory("landing-page", null, null, "CSS"),
   new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], "PYTHON"),
   new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], "PYTHON")
 ];
@@ -52,30 +52,40 @@ function craftElement(tagName, className, idName) {
 //  ---  Directories Display Logic  ---
 
 function buildDirectoryInfo(currentDir) {
-  const dirInfo = craftElement("div", "directory__info"),
-        dirName = craftElement("h3", "directory__name"),
-        dirAbout = craftElement("p", "directory__about"),
-        dirTags = craftElement("ul", "directory__tags"),
-        dirPrimaryLanguage = craftElement("p", "directory__primary-language");
+  const dirInfo = craftElement("div", "directory__info");
 
+  const dirName = craftElement("h3", "directory__name");
   dirName.textContent = currentDir.name;
-  dirAbout.textContent = currentDir.about;
-  dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+  dirInfo.appendChild(dirName);
 
-  //  ---  Directory Tags  ---
-  for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
-    const currentTag = currentDir.tags[dirTagIdx];
-    const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
-          dirTag = craftElement("div", "tag"),
-          dirTagText = craftElement("p", "tag__text");
-    dirTagText.textContent = currentTag;
-
-    dirTag.appendChild(dirTagText);
-    dirTagWrapper.appendChild(dirTag);
-    dirTags.appendChild(dirTagWrapper);
+  if (currentDir.about) {
+    const dirAbout = craftElement("p", "directory__about");
+    dirAbout.textContent = currentDir.about;
+    dirInfo.appendChild(dirAbout);
   }
 
-  dirInfo.append(dirName, dirAbout, dirTags, dirPrimaryLanguage);
+  if (currentDir.tags) {
+    const dirTags = craftElement("ul", "directory__tags");
+    for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
+      const currentTag = currentDir.tags[dirTagIdx];
+      const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
+            dirTag = craftElement("div", "tag"),
+            dirTagText = craftElement("p", "tag__text");
+      dirTagText.textContent = currentTag;
+
+      dirTag.appendChild(dirTagText);
+      dirTagWrapper.appendChild(dirTag);
+      dirTags.appendChild(dirTagWrapper);
+    }
+    dirInfo.appendChild(dirTags);
+  }
+
+  if (currentDir.primaryLanguage) {
+    const dirPrimaryLanguage = craftElement("p", "directory__primary-language");
+    dirPrimaryLanguage.textContent = currentDir.primaryLanguage;
+    dirInfo.append(dirPrimaryLanguage);
+  }
+
   return dirInfo;
 }
 
