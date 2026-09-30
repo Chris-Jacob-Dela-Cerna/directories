@@ -59,7 +59,6 @@ function buildDirectoryInfo(currentDir) {
         dirName = craftElement("a", "directory__name");
   dirName.textContent = currentDir.name;
   dirName.setAttribute("href", currentDir.url);
-  dirName.setAttribute("target", "__blank");
   dirNameWrapper.appendChild(dirName);
   dirInfo.appendChild(dirName);
 
@@ -78,7 +77,6 @@ function buildDirectoryInfo(currentDir) {
       
       dirTag.textContent = currentTag;
       dirTag.setAttribute("href", `https://github.com/topics/${currentTag}`);
-      dirTag.setAttribute("target", "__blank");
 
       dirTagWrapper.appendChild(dirTag);
       dirTags.appendChild(dirTagWrapper);

@@ -19,14 +19,14 @@
 
 
 :root {
-  --clr-150-blue-300: rgb(35, 40, 50);
+  --clr-150-blue-350: rgb(35, 40, 50);
   --clr-150-blue-500: rgb(20, 25, 35);
   --clr-200-blue-325: rgb(40, 45, 55);
   --clr-225-blue-300: rgb(45, 50, 60);
   --clr-250-blue-300: rgb(50, 55, 65);
   --clr-275-blue-450: rgb(40, 45, 70);
   --clr-300-blue-200: rgb(60, 65, 75);
-  --clr-500-green: rgb(0, 135, 55);
+  --clr-500-green: rgb(0, 125, 50);
   --clr-600-blue-100: rgb(145, 150, 160);
   --clr-750-blue-750: rgb(50, 110, 200);
   --clr-850-blue-75: rgb(210, 215, 225);
@@ -61,7 +61,7 @@ body > .page {
 }
 
 .page > .main-content {
-  background-color: var(--clr-150-blue-300);
+  background-color: var(--clr-150-blue-350);
 
   padding: 0.6rem 0;
 
@@ -107,7 +107,7 @@ body > .page {
 }
 
 .user-name__wrapper {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .user-name {
@@ -314,10 +314,10 @@ body > .page {
 
 .directories__options > .add-dir-btn {
   background-color: var(--clr-500-green);
-  border: 1px solid var(--clr-150-blue-300);
+  border: 0;
   border-radius: 7px;
   color: var(--clr-1000-white);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 
   padding: 0.4rem 0.9rem;
 
@@ -446,21 +446,20 @@ body > .page {
 
 .star__icon,
 .more__icon {
-  height: 1.4rem;
-  width: 1.4rem;
-}
-
-.star__icon,
-.star__text {
   pointer-events: none;
   user-select: none;
+
+  height: 1.4rem;
+  width: 1.4rem;
 }
 
 .star__text {
   color: var(--clr-1000-white);
   font-size: 0.73rem;
+  pointer-events: none;
+  user-select: none;
 
-  padding-left: 0.5rem;
+  padding-left: 0.7rem;
 }
 
 .directory__actions > .more {
