@@ -26,7 +26,8 @@
   --clr-250-blue-300: rgb(50, 55, 65);
   --clr-275-blue-450: rgb(40, 45, 70);
   --clr-300-blue-200: rgb(60, 65, 75);
-  --clr-500-green: rgb(0, 125, 50);
+  --clr-475-green: rgb(0, 125, 50);
+  --clr-500-green: rgb(0, 135, 55);
   --clr-600-blue-100: rgb(145, 150, 160);
   --clr-750-blue-750: rgb(50, 110, 200);
   --clr-850-blue-75: rgb(210, 215, 225);
@@ -43,6 +44,7 @@
   letter-spacing: 0.015rem;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 
@@ -114,7 +116,6 @@ body > .page {
   border-radius: 6px;
   color: var(--clr-850-blue-75);
   font-weight: bold;
-  text-decoration: none;
 
   padding: 0.35rem;
 
@@ -194,7 +195,6 @@ body > .page {
 .nav-item {
   border-radius: 6px;
   cursor: pointer;
-  text-decoration: none;
 
   padding: 0.4rem 0.55rem;
 
@@ -269,7 +269,6 @@ body > .page {
   color: var(--clr-850-blue-75);
   cursor: pointer;
   font-size: 0.85rem;
-  text-decoration: none;
 
   padding: 0.4rem 0;
 
@@ -313,10 +312,11 @@ body > .page {
 }
 
 .directories__options > .add-dir-btn {
-  background-color: var(--clr-500-green);
+  background-color: var(--clr-475-green);
   border: 0;
   border-radius: 7px;
   color: var(--clr-1000-white);
+  cursor: pointer;
   font-size: 0.8rem;
 
   padding: 0.4rem 0.9rem;
@@ -324,6 +324,8 @@ body > .page {
   display: flex;
   align-items: center;
   column-gap: 0.3rem;
+
+  &:hover { background-color: var(--clr-500-green); }
 }
 
 .add-dir-btn__icon {
@@ -349,7 +351,6 @@ body > .page {
   color: var(--clr-950-blue-650);
   font-size: 1.2rem;
   font-weight: bold;
-  text-decoration: none;
   text-overflow: clip;
 
   &:hover { text-decoration: underline; }
@@ -379,7 +380,6 @@ body > .page {
   border-radius: 25px;
   color: var(--clr-950-blue-650);
   font-size: 0.75rem;
-  text-decoration: none;
 
   padding: 0.3rem 0.6rem;
 
