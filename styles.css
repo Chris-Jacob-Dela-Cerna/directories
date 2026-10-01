@@ -24,6 +24,7 @@
   --clr-200-blue-325: rgb(40, 45, 55);
   --clr-225-blue-300: rgb(45, 50, 60);
   --clr-250-blue-300: rgb(50, 55, 65);
+  --clr-500-grey: rgb(120, 120, 120);
   --clr-275-blue-450: rgb(40, 45, 70);
   --clr-300-blue-200: rgb(60, 65, 75);
   --clr-475-green: rgb(0, 125, 50);
@@ -313,11 +314,12 @@ body > .page {
 
 .directories__options > .add-dir-btn {
   background-color: var(--clr-475-green);
-  border: 0;
+  border: 1px solid var(--clr-500-grey);
   border-radius: 7px;
   color: var(--clr-1000-white);
   cursor: pointer;
   font-size: 0.8rem;
+  font-weight: bold;
 
   padding: 0.4rem 0.9rem;
 
@@ -398,6 +400,7 @@ body > .page {
 }
 
 .primary-language__color {
+  border: 1px solid var(--clr-500-grey);
   border-radius: 100%;
 
   height: 0.85rem;
@@ -441,7 +444,7 @@ body > .page {
 }
 
 .directory__actions > .star {
-  padding: 0.1rem 0.7rem;
+  padding: 0.1rem 0.6rem;
 }
 
 .star__icon,
@@ -454,7 +457,7 @@ body > .page {
   color: var(--clr-1000-white);
   font-size: 0.73rem;
 
-  padding-left: 0.7rem;
+  padding-left: 0.6rem;
 }
 
 .directory__actions > .more {

@@ -2,7 +2,8 @@
 
 //  ---  DOM References  ---
 
-const pageDirectories = document.getElementById("directories__list");
+const directoryList = document.getElementById("directories__list");
+const followBtn = document.getElementById("user-profile__follow-btn");
 
 
 
@@ -120,6 +121,7 @@ function buildDirectoryActions(currentDir) {
         dirMoreIcon = craftElement("img", "more__icon");
 
   dirStarIcon.classList.add("ghost");
+  dirStarText.classList.add("ghost");
   dirMoreIcon.classList.add("ghost");
   updateStar(currentDir, dirStarIcon, dirStarText);
   // dirMoreIcon.setAttribute("src", "icons/chevron-down");
@@ -133,7 +135,7 @@ function buildDirectoryActions(currentDir) {
 }
 
 function loadDirectories() {
-  pageDirectories.replaceChildren();
+  directoryList.replaceChildren();
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
     const currentDir = directories[dirIdx];
@@ -152,9 +154,19 @@ function loadDirectories() {
       updateStar(currentDir, dirStarIcon, dirStarText);
     })
 
-    pageDirectories.appendChild(directory);
+    directoryList.appendChild(directory);
   }
 }
+
+
+
+//  ---  Event Listeners  ---
+
+followBtn.addEventListener("click", function() {
+  const currentTarget = event.currentTarget;
+  if (currentTarget.textContent === "Follow") currentTarget.textContent = "Unfollow";
+  else currentTarget.textContent = "Follow";
+})
 
 
 
