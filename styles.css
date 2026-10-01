@@ -122,7 +122,7 @@ body > .page {
   color: var(--clr-850-blue-75);
   font-weight: bold;
 
-  padding: 0.35rem;
+  padding: 0.4rem 0.35rem 0.5rem 0.35rem;
 
   display: flex;
   align-items: center;
@@ -300,6 +300,8 @@ body > .page {
 .contact-info__text {
   color: var(--clr-850-blue-75);
   font-size: 0.85rem;
+
+  padding-top: 0.05rem;
 }
 
 
@@ -436,8 +438,6 @@ body > .page {
   margin-bottom: 2.2rem;
 
   display: flex;
-
-  *:not(:first-child) { border-left: 1px solid var(--clr-300-blue-200); }
 }
 
 
@@ -451,23 +451,25 @@ body > .page {
 }
 
 .directory__actions > .star {
-  padding: 0.1rem 0.6rem;
+  padding: 0.2rem 0.8rem;
 }
 
 .star__icon,
 .more__icon {
-  height: 1.4rem;
-  width: 1.4rem;
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
 .star__text {
   color: var(--clr-1000-white);
   font-size: 0.73rem;
 
-  padding-left: 0.6rem;
+  padding-left: 0.5rem;
 }
 
 .directory__actions > .more {
+  border-left: 1px solid var(--clr-300-blue-200);
+
   padding: 0.1rem 0.25rem;
 }
 

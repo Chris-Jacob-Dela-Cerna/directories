@@ -101,12 +101,12 @@ function buildDirectoryInfo(currentDir) {
 
 function updateStar(currentDir, dirStarIcon, dirStarText) {
   if (currentDir.star) {
-    // dirStarIcon.setAttribute("src", "icons/star-solid");
-    // dirStarIcon.setAttribute("alt", "Solid Star");
+    dirStarIcon.setAttribute("src", "icons/star_rate_half_24dp_DAAA3F_FILL0_wght400_GRAD0_opsz24.svg");
+    dirStarIcon.setAttribute("alt", "Starred Icon");
     dirStarText.textContent = "Starred";
   } else {
-    // dirStarIcon.setAttribute("src", "icons/star-empty");
-    // dirStarIcon.setAttribute("alt", "Empty Star");
+    dirStarIcon.setAttribute("src", "icons/star_24dp_9198A1_FILL0_wght400_GRAD0_opsz24.svg");
+    dirStarIcon.setAttribute("alt", "Star Icon");
     dirStarText.textContent = "Star";
   }
 }
@@ -124,8 +124,8 @@ function buildDirectoryActions(currentDir) {
   dirStarText.classList.add("ghost");
   dirMoreIcon.classList.add("ghost");
   updateStar(currentDir, dirStarIcon, dirStarText);
-  // dirMoreIcon.setAttribute("src", "icons/chevron-down");
-  // dirMoreIcon.setAttribute("alt", "Downwards Chevron");
+  dirMoreIcon.setAttribute("src", "icons/arrow_drop_down_24dp_9198A1_FILL0_wght400_GRAD0_opsz24.svg");
+  dirMoreIcon.setAttribute("alt", "Dropdown Icon");
 
   dirStar.append(dirStarIcon, dirStarText);
   dirMore.appendChild(dirMoreIcon);
