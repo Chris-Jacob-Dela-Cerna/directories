@@ -99,7 +99,11 @@ body > .page {
   aspect-ratio: 1 / 1;
   width: 1.8rem;
 
-  padding: 0.2rem;
+  padding: 0.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover { background-color: var(--clr-200-blue-325); }
 }
@@ -128,6 +132,7 @@ body > .page {
 
 .header__top-right {
   display: flex;
+  align-items: center;
   column-gap: 0.8rem;
 }
 
@@ -138,7 +143,7 @@ body > .page {
 
   width: fit-content;
 
-  padding: 0.2rem;
+  padding: 0.35rem 0.3rem 0.35rem 0.4rem;
 
   display: flex;
   align-items: center;
@@ -150,15 +155,17 @@ body > .page {
 
 .create-new__icon {
   aspect-ratio: 1 / 1;
-  width: 1.2rem;
+  width: 1.1rem;
 }
 
 .header__profile-icon {
   border: 1px solid var(--clr-300-blue-200);
   border-radius: 100%;
   cursor: pointer;
+  user-select: none;
 
   aspect-ratio: 1 / 1;
+  height: 95%;
 }
 
 
@@ -213,7 +220,7 @@ body > .page {
 
 .nav-item__name {
   color: var(--clr-850-blue-75);
-  font-size: 0.85rem;
+  font-size: 0.825rem;
 }
 
 
@@ -472,11 +479,3 @@ body > .page {
   pointer-events: none;
   user-select: none;
 }
-
-
-
-/*  Temporary  */
-/* 
-.directory__actions-container {
-  border: 1px dashed var(--clr-600-blue-100);
-}  */
