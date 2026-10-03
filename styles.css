@@ -33,7 +33,7 @@
   --clr-750-blue-750: rgb(50, 110, 200);
   --clr-850-blue-75: rgb(210, 215, 225);
   --clr-950-blue-650: rgb(85, 150, 245);
-  --clr-1000-orange-550: rgb(255, 135, 115);
+  --clr-1000-orange-550: rgb(255, 120, 100);
   --clr-1000-white: rgb(255, 255, 255);
 
   --font-main: 'Plus Jakarta Sans';
@@ -194,7 +194,7 @@ body > .page {
 }
 
 .nav-item__container.current-page {
-  border-bottom: 1px solid var(--clr-1000-orange-550);
+  border-bottom: 3px solid var(--clr-1000-orange-550);
   margin-bottom: -1px;
 
   .nav-item { .nav-item__name { font-weight: bold; } }
@@ -306,6 +306,8 @@ body > .page {
 
 
 
+/*  Directories  */
+
 .main-content__container > .directories {
   padding-top: 0.2rem;
 
@@ -321,16 +323,16 @@ body > .page {
   justify-content: end;
 }
 
-.directories__options > .add-dir-btn {
+.new-directory__btn {
   background-color: var(--clr-475-green);
-  border: 1px solid var(--clr-500-grey);
+  border: 0;
   border-radius: 7px;
   color: var(--clr-1000-white);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: bold;
 
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 0.9rem;
 
   display: flex;
   align-items: center;
@@ -339,10 +341,12 @@ body > .page {
   &:hover { background-color: var(--clr-500-green); }
 }
 
-.add-dir-btn__icon {
+.new-directory__btn-icon {
   aspect-ratio: 1 / 1;
-  width: 1.2rem;
+  width: 1.15rem;
 }
+
+
 
 .directories__list > .directory {
   border-bottom: 1px solid var(--clr-300-blue-200);
@@ -451,13 +455,13 @@ body > .page {
 }
 
 .directory__actions > .star {
-  padding: 0.2rem 0.8rem;
+  padding: 0.25rem 0.8rem;
 }
 
 .star__icon,
 .more__icon {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 1.15rem;
+  width: 1.15rem;
 }
 
 .star__text {
