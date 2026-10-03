@@ -9,6 +9,7 @@ const pageDialog = document.querySelector(".new-directory__dialog");
 const pageDialogForm = document.getElementById("dialog-form");
 const pageDialogCloseBtn = document.querySelector(".dialog-header__close-btn");
 const pageDialogSubmitBtn = document.querySelector("dialog-form__submit-btn");
+const pageDialogInputs = document.querySelectorAll(".dialog-form__input");
 
 
 
@@ -208,6 +209,25 @@ pageFollowBtn.addEventListener("click", function() {
   const followButton = event.target;
   if (followButton.textContent === "Follow") followButton.textContent = "Unfollow";
   else followButton.textContent = "Follow";
+})
+
+pageNewDirBtn.addEventListener("click", function() {
+  pageDialog.show();
+})
+
+pageDialogCloseBtn.addEventListener("click", function() {
+  pageDialog.close();
+})
+
+pageDialogForm.addEventListener("submit", function(){
+  const formData = new FormData(event.target);
+  const formDataObj = Object.fromEntries(formData.entries());
+
+  const newDirectory = new Directory(formDataObj);
+  directoriesData.push(newDirectory);
+  loadDirectories();
+
+  pageDialogInputs.forEach(input => input.value = "");
 })
 
 
