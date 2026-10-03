@@ -2,8 +2,13 @@
 
 //  ---  DOM References  ---
 
-const pageDirectories = document.getElementById("directories__list");
-const pageFollowBtn = document.getElementById("user-profile__follow-btn");
+const pageDirectories = document.querySelector(".directories__list");
+const pageFollowBtn = document.querySelector(".user-profile__follow-btn");
+const pageNewDirBtn = document.querySelector(".new-directory__btn");
+const pageDialog = document.querySelector(".new-directory__dialog");
+const pageDialogForm = document.getElementById("dialog-form");
+const pageDialogCloseBtn = document.querySelector(".dialog-header__close-btn");
+const pageDialogSubmitBtn = document.querySelector("dialog-form__submit-btn");
 
 
 
