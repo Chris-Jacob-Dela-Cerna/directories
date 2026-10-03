@@ -7,7 +7,7 @@ const pageFollowBtn = document.querySelector(".user-profile__follow-btn");
 const pageNewDirBtn = document.querySelector(".new-directory__btn");
 const pageDialog = document.querySelector(".new-directory__dialog");
 const pageDialogForm = document.getElementById("dialog-form");
-const pageDialogCloseBtn = document.querySelector(".dialog-header__close-btn");
+const pageDialogCloseBtn = document.querySelector(".dialog__close-btn");
 const pageDialogSubmitBtn = document.querySelector("dialog-form__submit-btn");
 const pageDialogInputs = document.querySelectorAll(".dialog-form__input");
 

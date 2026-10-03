@@ -77,6 +77,10 @@
                 </button>
 
                 <dialog class="new-directory__dialog" closedby="closerequest">
+                  <button class="dialog__close-btn">
+                    <img class="dialog__close-btn-icon">
+                    x
+                  </button>
                   <div class="dialog-header">
                     <div class="dialog-header__text-wrapper">
                       <h3 class="dialog-header__heading"> Create a new directory </h3>
@@ -84,10 +88,6 @@
                         <em> Required fields are marked with an asterisk (*). </em>
                       </p>
                     </div>
-                    <button class="dialog-header__close-btn">
-                      <img class="dialog-header__close-btn-icon">
-                      x
-                    </button>
                   </div>
                   <form id="dialog-form" class="dialog-form" action="#">
                     <div class="dialog-form__input-wrapper">
@@ -99,7 +99,7 @@
                       <input id="dialog-form__directory-description" class="dialog-form__input" name="description" type="text">
                     </div>
                   </form>
-                  <button class="dialog-form__submit-btn" form="dialog-form" formmethod="dialog" type="submit"> Create directory </button>
+                  <button class="dialog-form__submit-btn" form="dialog-form" formmethod="dialog" type="submit"> Create Directory </button>
                 </dialog>
               </div>
             </div>
