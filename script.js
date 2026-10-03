@@ -212,7 +212,8 @@ pageFollowBtn.addEventListener("click", function() {
 })
 
 pageNewDirBtn.addEventListener("click", function() {
-  pageDialog.show();
+  if (pageDialog.open) pageDialog.close();
+  else pageDialog.show();
 })
 
 pageDialogCloseBtn.addEventListener("click", function() {
