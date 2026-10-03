@@ -9,7 +9,7 @@ const followBtn = document.getElementById("user-profile__follow-btn");
 
 //  ---  Directory Object Constructor  ---
 
-function Directory(name, about=null, tags=null, primaryLanguage=null, url="#", star=false) {
+function Directory({ name, about=null, tags=null, primaryLanguage=null, url="#", star=false }) {
   if (!new.target) throw Error("cannot create object without [new].");
 
   this.name = name;
@@ -29,18 +29,51 @@ Directory.prototype.toggleStar = function () {
 //  ---  List of Directories  ---
 
 const directories = [
-  new Directory("orion-sign-up", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up"),
-  new Directory("orion-dashboard", null, null, { "color": "#ee3008", "language": "HTML" }, "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard"),
-  new Directory("calculator", null, null, { "color": "#ebed48", "language": "JavaScript" }, "https://github.com/Chris-Jacob-Dela-Cerna/calculator"),
-  new Directory("etch-a-sketch", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch"),
-  new Directory("landing-page", null, null, { "color": "#75009c", "language": "CSS" }, "https://github.com/Chris-Jacob-Dela-Cerna/landing-page"),
-  new Directory("bugtopia", "Terminal game — a turn-based bug battle game built in Python.", ["game", "python", "cli", "oop", "terminal-game"], { "color": "#3869a8", "language": "Python" }, "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia"),
-  new Directory("quizpin", "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.", ["python", "cli", "csv", "terminal"], { "color": "#3869a8", "language": "Python" }, "https://github.com/Chris-Jacob-Dela-Cerna/quizpin")
-];
+  new Directory({
+    "name": "quizpin",
+    "about": "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
+    "tags": ["python", "cli", "csv", "terminal"],
+    "primaryLanguage": { "color": "#3869a8", "language": "Python" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/quizpin", 
+  }),
+  new Directory({
+    "name": "bugtopia",
+    "about": "Terminal game — a turn-based bug battle game built in Python.",
+    "tags": ["game", "python", "cli", "oop", "terminal-game"],
+    "primaryLanguage": { "color": "#3869a8", "language": "Python" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia", 
+  }),
+  new Directory({
+    "name": "landing-page",
+    "primaryLanguage": { "color": "#75009c", "language": "CSS" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/landing-page", 
+  }),
+  new Directory({
+    "name": "etch-a-sketch",
+    "primaryLanguage": { "color": "#75009c", "language": "CSS" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch", 
+  }),
+  new Directory({
+    "name": "calculator",
+
+    "primaryLanguage": { "color": "#ebed48", "language": "JavaScript" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/calculator", 
+  }),
+    new Directory({
+    "name": "orion-sign-up",
+    "primaryLanguage": { "color": "#ee3008", "language": "HTML" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up", 
+  }),
+    new Directory({
+    "name": "orion-dashboard",
+    "primaryLanguage": { "color": "#75009c", "language": "CSS" },
+    "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard", 
+  })
+]
 
 
 
-//  ---  Utilities  ---
+//  ---  Directory Build Logic  ---
 
 function craftElement(tagName, className, idName) {
   const element = document.createElement(tagName);
@@ -48,10 +81,6 @@ function craftElement(tagName, className, idName) {
   if (idName) element.setAttribute("id", idName);
   return element;
 }
-
-
-
-//  ---  Directories Display Logic  ---
 
 function buildDirectoryInfo(currentDir) {
   const dirInfo = craftElement("div", "directory__info");
@@ -86,14 +115,14 @@ function buildDirectoryInfo(currentDir) {
   }
 
   if (currentDir.primaryLanguage) {
-    const dirPrimaryLanguage = craftElement("div", "primary-language"),
-          dirPrimaryLanguageColor = craftElement("div", "primary-language__color"),
-          dirPrimaryLanguageName = craftElement("p", "primary-language__name");
-    dirPrimaryLanguageColor.style.backgroundColor = currentDir.primaryLanguage['color'];
-    dirPrimaryLanguageName.textContent = currentDir.primaryLanguage['language'];
+    const dirPrimLang = craftElement("div", "primary-language"),
+          dirPrimLangColor = craftElement("div", "primary-language__color"),
+          dirPrimLangName = craftElement("p", "primary-language__name");
+    dirPrimLangColor.style.backgroundColor = currentDir.primaryLanguage['color'];
+    dirPrimLangName.textContent = currentDir.primaryLanguage['language'];
 
-    dirPrimaryLanguage.append(dirPrimaryLanguageColor, dirPrimaryLanguageName);
-    dirInfo.append(dirPrimaryLanguage);
+    dirPrimLang.append(dirPrimLangColor, dirPrimLangName);
+    dirInfo.append(dirPrimLang);
   }
 
   return dirInfo;
@@ -123,6 +152,7 @@ function buildDirectoryActions(currentDir) {
   dirStarIcon.classList.add("ghost");
   dirStarText.classList.add("ghost");
   dirMoreIcon.classList.add("ghost");
+
   updateStar(currentDir, dirStarIcon, dirStarText);
   dirMoreIcon.setAttribute("src", "icons/arrow_drop_down_24dp_9198A1_FILL0_wght400_GRAD0_opsz24.svg");
   dirMoreIcon.setAttribute("alt", "Dropdown Icon");

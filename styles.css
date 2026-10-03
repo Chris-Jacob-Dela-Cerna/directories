@@ -382,7 +382,7 @@ body > .page {
 
 .directory__tags {
   list-style: none;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
 
   display: flex;
   column-gap: 0.2rem;
@@ -405,7 +405,7 @@ body > .page {
 }
 
 .directory__info > .primary-language {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
 
   display: flex;
   align-items: center;
@@ -416,8 +416,8 @@ body > .page {
   border: 1px solid var(--clr-500-grey);
   border-radius: 100%;
 
-  height: 0.85rem;
-  width: 0.85rem;
+  height: 0.8rem;
+  width: 0.8rem;
 }
 
 .primary-language__name {
@@ -438,8 +438,6 @@ body > .page {
   border: 1px solid var(--clr-300-blue-200);
   border-radius: 8px;
   cursor: pointer;
-
-  margin-bottom: 2.2rem;
 
   display: flex;
 }
