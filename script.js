@@ -9,11 +9,11 @@ const pageFollowBtn = document.getElementById("user-profile__follow-btn");
 
 //  ---  Directory Object Constructor  ---
 
-function Directory({ name, about=null, tags=null, primaryLanguage=null, url="#", star=false }) {
+function Directory({ name, description=null, tags=null, primaryLanguage=null, url="#", star=false }) {
   if (!new.target) throw Error("cannot create object without [new] declaration.");
 
   this.name = name;
-  this.about = about;
+  this.description = description;
   this.tags = tags;
   this.primaryLanguage = primaryLanguage;
   this.star = star;
@@ -31,14 +31,14 @@ Directory.prototype.toggleStar = function () {
 const directoriesData = [
   new Directory({
     "name": "quizpin",
-    "about": "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
+    "description": "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
     "tags": ["python", "cli", "csv", "terminal"],
     "primaryLanguage": { "color": "#3869a8", "language": "Python" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/quizpin", 
   }),
   new Directory({
     "name": "bugtopia",
-    "about": "Terminal game — a turn-based bug battle game built in Python.",
+    "description": "Terminal game — a turn-based bug battle game built in Python.",
     "tags": ["game", "python", "cli", "oop", "terminal-game"],
     "primaryLanguage": { "color": "#3869a8", "language": "Python" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia", 
@@ -92,10 +92,10 @@ function buildDirectoryInfo(currentDir) {
   dirNameWrapper.appendChild(dirName);
   dirInfo.appendChild(dirName);
 
-  if (currentDir.about) {
-    const dirAbout = buildElement("p", "directory__about");
-    dirAbout.textContent = currentDir.about;
-    dirInfo.appendChild(dirAbout);
+  if (currentDir.description) {
+    const dirDesc = buildElement("p", "directory__description");
+    dirDesc.textContent = currentDir.description;
+    dirInfo.appendChild(dirDesc);
   }
 
   if (currentDir.tags) {

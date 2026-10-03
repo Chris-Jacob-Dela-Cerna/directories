@@ -373,7 +373,7 @@ body > .page {
   &:hover { text-decoration: underline; }
 }
 
-.directory__about {
+.directory__description {
   color: var(--clr-600-blue-100);
   font-size: 0.9rem;
 

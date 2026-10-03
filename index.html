@@ -61,7 +61,7 @@
               <p class="user-profile__user-name"> Chris-Jacob-Dela-Cerna </p>
             </div>
             <p class="user-profile__bio"> A CS student building in public. </p>
-            <button class="user-profile__follow-btn" id="user-profile__follow-btn"> Follow </button>
+            <button id="user-profile__follow-btn" class="user-profile__follow-btn"> Follow </button>
             <div class="contact-info">
               <img class="contact-info__icon ghost" src="icons/mail_24dp_828C91_FILL0_wght400_GRAD0_opsz24.svg" alt="Email Icon">
               <p class="contact-info__text"> b1.tgr0509@gmail.com </p>
@@ -75,9 +75,34 @@
                   <img class="new-directory__btn-icon ghost" src="icons/book_2_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="New Directory Icon">
                   <p class="new-directory__btn-text"> New </p>
                 </button>
+
+                <dialog class="new-directory__dialog" open>
+                  <div class="dialog-header">
+                    <div class="dialog-header__text-wrapper">
+                      <h3 class="dialog-header__heading"> Create a new directory </h3>
+                      <p class="dialog-header__note"> 
+                        <em> Required fields are marked with an asterisk (*). </em>
+                      </p>
+                    </div>
+                    <button class="dialog-header__close-btn">
+                      <img class="dialog-header__close-btn-icon">
+                    </button>
+                  </div>
+                  <form class="dialog-form" action="#">
+                    <div class="dialog-form__input-wrapper">
+                      <label for="directory-name" class="dialog-form__label"> Repository Name * </label>
+                      <input id="directory-name" class="dialog-form__input" name="name" type="text">
+                    </div>
+                    <div class="dialog-form__input-wrapper">
+                      <label for="directory-description" class="dialog-form__label"> Description </label>
+                      <input id="directory-description" class="dialog-form__input" name="description" type="text">
+                    </div>
+                  </form>
+                  <button> Create directory </button>
+                </dialog>
               </div>
             </div>
-            <ul class="directories__list" id="directories__list"></ul>
+            <ul id="directories__list" class="directories__list"></ul>
           </div>
         </div>
       </main>
