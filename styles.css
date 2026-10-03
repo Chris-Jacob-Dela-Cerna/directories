@@ -240,7 +240,9 @@ body > .page {
 
 
 .main-content__container > .user-profile {
+  max-height: min-content;
   max-width: 300px;
+
   padding: 2rem 0;
 
   display: flex;

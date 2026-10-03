@@ -2,15 +2,15 @@
 
 //  ---  DOM References  ---
 
-const directoryList = document.getElementById("directories__list");
-const followBtn = document.getElementById("user-profile__follow-btn");
+const pageDirectories = document.getElementById("directories__list");
+const pageFollowBtn = document.getElementById("user-profile__follow-btn");
 
 
 
 //  ---  Directory Object Constructor  ---
 
 function Directory({ name, about=null, tags=null, primaryLanguage=null, url="#", star=false }) {
-  if (!new.target) throw Error("cannot create object without [new].");
+  if (!new.target) throw Error("cannot create object without [new] declaration.");
 
   this.name = name;
   this.about = about;
@@ -28,7 +28,7 @@ Directory.prototype.toggleStar = function () {
 
 //  ---  List of Directories  ---
 
-const directories = [
+const directoriesData = [
   new Directory({
     "name": "quizpin",
     "about": "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
@@ -59,12 +59,12 @@ const directories = [
     "primaryLanguage": { "color": "#ebed48", "language": "JavaScript" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/calculator", 
   }),
-    new Directory({
+  new Directory({
     "name": "orion-sign-up",
     "primaryLanguage": { "color": "#ee3008", "language": "HTML" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up", 
   }),
-    new Directory({
+  new Directory({
     "name": "orion-dashboard",
     "primaryLanguage": { "color": "#75009c", "language": "CSS" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard", 
@@ -73,9 +73,9 @@ const directories = [
 
 
 
-//  ---  Directory Build Logic  ---
+//  ---  Directory Building Logic  ---
 
-function craftElement(tagName, className, idName) {
+function buildElement(tagName, className, idName) {
   const element = document.createElement(tagName);
   if (className) element.classList.add(className);
   if (idName) element.setAttribute("id", idName);
@@ -83,28 +83,28 @@ function craftElement(tagName, className, idName) {
 }
 
 function buildDirectoryInfo(currentDir) {
-  const dirInfo = craftElement("div", "directory__info");
+  const dirInfo = buildElement("div", "directory__info");
 
-  const dirNameWrapper = craftElement("h3", "directory__name-wrapper"),
-        dirName = craftElement("a", "directory__name");
+  const dirNameWrapper = buildElement("h3", "directory__name-wrapper"),
+        dirName = buildElement("a", "directory__name");
   dirName.textContent = currentDir.name;
   dirName.setAttribute("href", currentDir.url);
   dirNameWrapper.appendChild(dirName);
   dirInfo.appendChild(dirName);
 
   if (currentDir.about) {
-    const dirAbout = craftElement("p", "directory__about");
+    const dirAbout = buildElement("p", "directory__about");
     dirAbout.textContent = currentDir.about;
     dirInfo.appendChild(dirAbout);
   }
 
   if (currentDir.tags) {
-    const dirTags = craftElement("ul", "directory__tags");
+    const dirTags = buildElement("ul", "directory__tags");
     for (let dirTagIdx = 0; dirTagIdx < currentDir.tags.length; dirTagIdx++) {
       const currentTag = currentDir.tags[dirTagIdx];
-      const dirTagWrapper = craftElement("li", "directory__tag-wrapper"),
-            dirTag = craftElement("a", "directory__tag");
-      
+      const dirTagWrapper = buildElement("li", "directory__tag-wrapper"),
+            dirTag = buildElement("a", "directory__tag");
+
       dirTag.textContent = currentTag;
       dirTag.setAttribute("href", `https://github.com/topics/${currentTag}`);
 
@@ -115,9 +115,9 @@ function buildDirectoryInfo(currentDir) {
   }
 
   if (currentDir.primaryLanguage) {
-    const dirPrimLang = craftElement("div", "primary-language"),
-          dirPrimLangColor = craftElement("div", "primary-language__color"),
-          dirPrimLangName = craftElement("p", "primary-language__name");
+    const dirPrimLang = buildElement("div", "primary-language"),
+          dirPrimLangColor = buildElement("div", "primary-language__color"),
+          dirPrimLangName = buildElement("p", "primary-language__name");
     dirPrimLangColor.style.backgroundColor = currentDir.primaryLanguage['color'];
     dirPrimLangName.textContent = currentDir.primaryLanguage['language'];
 
@@ -141,13 +141,13 @@ function updateStar(currentDir, dirStarIcon, dirStarText) {
 }
 
 function buildDirectoryActions(currentDir) {
-  const dirActionsContainer = craftElement("div", "directory__actions-container"),
-        dirActions = craftElement("div", "directory__actions"),
-        dirStar = craftElement("div", "star"),
-        dirStarIcon = craftElement("img", "star__icon"),
-        dirStarText = craftElement("p", "star__text"),
-        dirMore = craftElement("div", "more"),
-        dirMoreIcon = craftElement("img", "more__icon");
+  const dirActionsContainer = buildElement("div", "directory__actions-container"),
+        dirActions = buildElement("div", "directory__actions"),
+        dirStar = buildElement("div", "star"),
+        dirStarIcon = buildElement("img", "star__icon"),
+        dirStarText = buildElement("p", "star__text"),
+        dirMore = buildElement("div", "more"),
+        dirMoreIcon = buildElement("img", "more__icon");
 
   dirStarIcon.classList.add("ghost");
   dirStarText.classList.add("ghost");
@@ -164,27 +164,34 @@ function buildDirectoryActions(currentDir) {
   return dirActionsContainer;
 }
 
+
+
+//  ---  Directory Loading Logic  ---
+
+function loadDirectory(currentDir) {
+  const directory  = buildElement("div", "directory"),
+        dirInfo    = buildDirectoryInfo(currentDir),
+        dirActions = buildDirectoryActions(currentDir);
+
+  directory.append(dirInfo, dirActions);
+  directory.addEventListener("click", function(event) {
+    if (![...event.target.classList].includes("star")) return;
+    currentDir.toggleStar();
+
+    const dirStarIcon = directory.querySelector(".star__icon"),
+          dirStarText = directory.querySelector(".star__text");
+    updateStar(currentDir, dirStarIcon, dirStarText);
+  })
+
+  pageDirectories.appendChild(directory);
+}
+
 function loadDirectories() {
-  directoryList.replaceChildren();
+  pageDirectories.replaceChildren();
+  const directories = directoriesData.reverse();
 
   for (let dirIdx = 0; dirIdx < directories.length; dirIdx++) {
-    const currentDir = directories[dirIdx];
-    const directory = craftElement("div", "directory"),
-          dirInfo = buildDirectoryInfo(currentDir),
-          dirActions = buildDirectoryActions(currentDir);
-
-    directory.append(dirInfo, dirActions);
-
-    directory.addEventListener("click", function(event) {
-      if (![...event.target.classList].includes("star")) return;
-      currentDir.toggleStar();
-
-      const dirStarIcon = directory.querySelector(".star__icon"),
-            dirStarText = directory.querySelector(".star__text");
-      updateStar(currentDir, dirStarIcon, dirStarText);
-    })
-
-    directoryList.appendChild(directory);
+    loadDirectory(directories[dirIdx]);
   }
 }
 
@@ -192,10 +199,10 @@ function loadDirectories() {
 
 //  ---  Event Listeners  ---
 
-followBtn.addEventListener("click", function() {
-  const currentTarget = event.currentTarget;
-  if (currentTarget.textContent === "Follow") currentTarget.textContent = "Unfollow";
-  else currentTarget.textContent = "Follow";
+pageFollowBtn.addEventListener("click", function() {
+  const followButton = event.target;
+  if (followButton.textContent === "Follow") followButton.textContent = "Unfollow";
+  else followButton.textContent = "Follow";
 })
 
 
