@@ -382,14 +382,23 @@ body > .page {
   border-radius: 8px;
   cursor: pointer;
 
-  aspect-ratio: 1 / 1;
+  height: 1.8rem;
   width: 1.8rem;
 
   position: absolute;
   right: 0.4rem;
   top: 0.4rem;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover { background-color: var(--clr-300-blue-200); }
+}
+
+.dialog__close-btn-icon {
+  aspect-ratio: 1 / 1;
+  width: 1.1rem;
 }
 
 .dialog-header__heading {
@@ -461,7 +470,6 @@ body > .page {
   color: var(--clr-950-blue-650);
   font-size: 1.2rem;
   font-weight: bold;
-  text-overflow: clip;
 
   &:hover { text-decoration: underline; }
 }
