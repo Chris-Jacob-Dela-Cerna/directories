@@ -92,11 +92,11 @@
                   <form id="dialog-form" class="dialog-form" action="#">
                     <div class="dialog-form__input-wrapper">
                       <label for="dialog-form__directory-name" class="dialog-form__label"> Repository Name * </label>
-                      <input id="dialog-form__directory-name" class="dialog-form__input" name="name" type="text" required>
+                      <input id="dialog-form__directory-name" class="dialog-form__input" name="name" type="text" minlength="1" maxlength="20" pattern="^[a-zA-Z0-9._\-]+$" title="Repository name can only contain letters, numbers, hyphens, underscores, and periods." autofocus required>
                     </div>
                     <div class="dialog-form__input-wrapper">
                       <label for="dialog-form__directory-description" class="dialog-form__label"> Description </label>
-                      <input id="dialog-form__directory-description" class="dialog-form__input" name="description" type="text">
+                      <input id="dialog-form__directory-description" class="dialog-form__input" name="description" type="text" maxlength="250" title="Description cannot exceed 250 characters.">
                     </div>
                   </form>
                   <button class="dialog-form__submit-btn" form="dialog-form" formmethod="dialog" type="submit"> Create Directory </button>

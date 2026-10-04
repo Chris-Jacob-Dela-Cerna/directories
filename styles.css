@@ -365,7 +365,7 @@ body > .page {
 
   width: 21rem;
 
-  padding: 1rem;
+  padding: 0.8rem 1rem;
 
   position: absolute;
   top: 120%;
@@ -423,7 +423,7 @@ body > .page {
 .dialog-form__input {
   background-color: var(--clr-150-blue-350);
   border: 1px solid var(--clr-400-blue-200);
-  border-radius: 4px;
+  border-radius: 5px;
   color: var(--clr-1000-white);
   font-size: 0.9rem;
 
@@ -436,6 +436,8 @@ body > .page {
   box-shadow: 0 2px 4px var(--clr-500-black);
   font-size: 0.85rem;
 
+  padding: 0.55rem 0.9rem;
+
   &:active { box-shadow: 0 0 4px var(--clr-500-black); }
 }
 
@@ -444,14 +446,14 @@ body > .page {
 .directories__list > .directory {
   border-bottom: 1px solid var(--clr-300-blue-200);
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 10rem;
 }
 
 .directory__info {
   padding: 1.7rem 4rem 2.5rem 0;
 
   display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
 }
 
@@ -522,7 +524,6 @@ body > .page {
 .directory__actions-container {
   display: flex;
   align-items: center;
-  flex: 0 0 10rem;
   justify-content: end;
 }
 
