@@ -124,7 +124,7 @@ body > .page {
   color: var(--clr-850-blue-75);
   font-weight: bold;
 
-  padding: 0.4rem 0.35rem 0.5rem 0.35rem;
+  padding: 0.4rem 0.35rem;
 
   display: flex;
   align-items: center;

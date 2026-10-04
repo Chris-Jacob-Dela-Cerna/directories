@@ -208,7 +208,7 @@ function loadDirectories() {
 
 pageFollowBtn.addEventListener("click", function() {
   const followButton = event.target;
-  if (followButton.textContent === "Follow") followButton.textContent = "Unfollow";
+  if (followButton.textContent.trim() === "Follow") followButton.textContent = "Unfollow";
   else followButton.textContent = "Follow";
 })
 
