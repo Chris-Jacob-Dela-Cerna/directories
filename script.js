@@ -155,13 +155,14 @@ function buildDirectoryActions(currentDir) {
         dirMore = buildElement("div", "more"),
         dirMoreIcon = buildElement("img", "more__icon");
 
+  updateStar(currentDir, dirStarIcon, dirStarText);
   dirStarIcon.classList.add("ghost");
   dirStarText.classList.add("ghost");
-  dirMoreIcon.classList.add("ghost");
 
-  updateStar(currentDir, dirStarIcon, dirStarText);
+  dirMore.setAttribute("title", "For decoration purposes only.");
   dirMoreIcon.setAttribute("src", "icons/arrow_drop_down_24dp_9198A1_FILL0_wght400_GRAD0_opsz24.svg");
   dirMoreIcon.setAttribute("alt", "Dropdown Icon");
+  dirMoreIcon.classList.add("ghost");
 
   dirStar.append(dirStarIcon, dirStarText);
   dirMore.appendChild(dirMoreIcon);
