@@ -2,28 +2,35 @@
 
 //  ---  DOM References  ---
 
-const pageDirectories = document.querySelector(".directories__list");
-const pageFollowBtn = document.querySelector(".user-profile__follow-btn");
-const pageNewDirBtn = document.querySelector(".new-directory__btn");
-const pageDialog = document.querySelector(".new-directory__dialog");
-const pageDialogForm = document.getElementById("dialog-form");
-const pageDialogCloseBtn = document.querySelector(".dialog__close-btn");
+const pageDirectories     = document.querySelector(".directories__list");
+const pageFollowBtn       = document.querySelector(".user-profile__follow-btn");
+const pageNewDirBtn       = document.querySelector(".new-directory__btn");
+const pageDialog          = document.querySelector(".new-directory__dialog");
+const pageDialogForm      = document.getElementById("dialog-form");
+const pageDialogCloseBtn  = document.querySelector(".dialog__close-btn");
 const pageDialogSubmitBtn = document.querySelector("dialog-form__submit-btn");
-const pageDialogInputs = document.querySelectorAll(".dialog-form__input");
+const pageDialogInputs    = document.querySelectorAll(".dialog-form__input");
 
 
 
 //  ---  Directory Object Constructor  ---
 
-function Directory({ name, description=null, tags=null, primaryLanguage=null, url="#", star=false }) {
+function Directory({
+    name, 
+    description     = null, 
+    tags            = null, 
+    primaryLanguage = null, 
+    url             = "#", 
+    star            = false 
+  }) {
   if (!new.target) throw Error("cannot create object without [new] declaration.");
 
-  this.name = name;
-  this.description = description;
-  this.tags = tags;
+  this.name            = name;
+  this.description     = description;
+  this.tags            = tags;
   this.primaryLanguage = primaryLanguage;
-  this.star = star;
-  this.url = url;
+  this.star            = star;
+  this.url             = url;
 }
 
 Directory.prototype.toggleStar = function () {
@@ -36,44 +43,43 @@ Directory.prototype.toggleStar = function () {
 
 const directoriesData = [
   new Directory({
-    "name": "quizpin",
-    "description": "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
-    "tags": ["python", "cli", "csv", "terminal"],
+    "name":            "quizpin",
+    "description":     "Terminal quiz app — create, run, and manage CSV-based quizzes from the command line.",
+    "tags":            [ "python", "cli", "csv", "terminal" ],
     "primaryLanguage": { "color": "#3869a8", "language": "Python" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/quizpin", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/quizpin", 
   }),
   new Directory({
-    "name": "bugtopia",
-    "description": "Terminal game — a turn-based bug battle game built in Python.",
-    "tags": ["game", "python", "cli", "oop", "terminal-game"],
+    "name":            "bugtopia",
+    "description":     "Terminal game — a turn-based bug battle game built in Python.",
+    "tags":            [ "game", "python", "cli", "oop", "terminal-game" ],
     "primaryLanguage": { "color": "#3869a8", "language": "Python" },
     "url": "https://github.com/Chris-Jacob-Dela-Cerna/bugtopia", 
   }),
   new Directory({
-    "name": "landing-page",
+    "name":            "landing-page",
     "primaryLanguage": { "color": "#75009c", "language": "CSS" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/landing-page", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/landing-page", 
   }),
   new Directory({
-    "name": "etch-a-sketch",
+    "name":            "etch-a-sketch",
     "primaryLanguage": { "color": "#75009c", "language": "CSS" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/etch-a-sketch", 
   }),
   new Directory({
-    "name": "calculator",
-
+    "name":            "calculator",
     "primaryLanguage": { "color": "#ebed48", "language": "JavaScript" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/calculator", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/calculator", 
   }),
   new Directory({
-    "name": "orion-sign-up",
+    "name":            "orion-sign-up",
     "primaryLanguage": { "color": "#ee3008", "language": "HTML" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/orion-sign-up", 
   }),
   new Directory({
-    "name": "orion-dashboard",
+    "name":            "orion-dashboard",
     "primaryLanguage": { "color": "#75009c", "language": "CSS" },
-    "url": "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard", 
+    "url":             "https://github.com/Chris-Jacob-Dela-Cerna/orion-dashboard", 
   })
 ]
 
@@ -148,12 +154,12 @@ function updateStar(currentDir, dirStarIcon, dirStarText) {
 
 function buildDirectoryActions(currentDir) {
   const dirActionsContainer = buildElement("div", "directory__actions-container"),
-        dirActions = buildElement("div", "directory__actions"),
-        dirStar = buildElement("div", "star"),
-        dirStarIcon = buildElement("img", "star__icon"),
-        dirStarText = buildElement("p", "star__text"),
-        dirMore = buildElement("div", "more"),
-        dirMoreIcon = buildElement("img", "more__icon");
+        dirActions          = buildElement("div", "directory__actions"),
+        dirStar             = buildElement("div", "star"),
+        dirStarIcon         = buildElement("img", "star__icon"),
+        dirStarText         = buildElement("p", "star__text"),
+        dirMore             = buildElement("div", "more"),
+        dirMoreIcon         = buildElement("img", "more__icon");
 
   updateStar(currentDir, dirStarIcon, dirStarText);
   dirStarIcon.classList.add("ghost");
@@ -222,8 +228,8 @@ pageDialogCloseBtn.addEventListener("click", function() {
 })
 
 pageDialogForm.addEventListener("submit", function(){
-  const formData = new FormData(event.target);
-  const formDataObj = Object.fromEntries(formData.entries());
+  const formData     = new FormData(event.target);
+  const formDataObj  = Object.fromEntries(formData.entries());
 
   const newDirectory = new Directory(formDataObj);
   directoriesData.push(newDirectory);
