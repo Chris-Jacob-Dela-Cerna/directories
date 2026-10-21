@@ -13,28 +13,21 @@ const pageDialogInputs    = document.querySelectorAll(".dialog-form__input");
 
 
 
-//  ---  Directory Object Constructor  ---
+//  ---  Directory Class  ---
 
-function Directory({
-    name, 
-    description     = null, 
-    tags            = null, 
-    primaryLanguage = null, 
-    url             = "#", 
-    star            = false 
-  }) {
-  if (!new.target) throw Error("cannot create object without [new] declaration.");
+class Directory {
+  constructor( { name, description = null, tags = null, primaryLanguage = null, url = "#", star = false } ) {
+    this.name = name;
+    this.description = description;
+    this.tags = tags;
+    this.primaryLanguage = primaryLanguage;
+    this.star = star;
+    this.url = url;
+  }
 
-  this.name            = name;
-  this.description     = description;
-  this.tags            = tags;
-  this.primaryLanguage = primaryLanguage;
-  this.star            = star;
-  this.url             = url;
-}
-
-Directory.prototype.toggleStar = function () {
-  this.star = !this.star;
+  toggleStar() {
+    this.star = !this.star;
+  }
 }
 
 
